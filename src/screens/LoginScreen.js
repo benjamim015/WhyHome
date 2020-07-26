@@ -1,5 +1,13 @@
 import React from 'react';
-import { View, Text, Dimensions } from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  ScrollView,
+  View,
+  Text,
+  StatusBar,
+} from 'react-native';
+import { Dimensions } from 'react-native';
 
 import styled from 'styled-components';
 
@@ -17,6 +25,9 @@ const LoginScreen = ({ navigation }) => {
   );
 };
 
+const Reer = styled.Text`
+  color: #ff0000;
+`;
 const StyledView1 = styled.View`
   flex: 1;
   align-items: center;
