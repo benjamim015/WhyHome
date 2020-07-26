@@ -1,52 +1,14 @@
-import * as React from 'react';
-import { Text, View, TouchableOpacity, Dimensions } from 'react-native';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
-// import { TouchableOpacity } from 'react-native-gesture-handler';
+import React from 'react';
+import { Dimensions } from 'react-native';
 
 import styled from 'styled-components';
+
+import Card from '../components/Card';
 
 const larguraDaTela = Dimensions.get('window').width;
 const alturaDaTela = Dimensions.get('window').height;
 
-function HomeScreen() {
-  return (
-    <TouchableOpacity
-      style={{
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'purple',
-        height: '90%',
-        width: '80%',
-        alignSelf: 'center',
-        borderRadius: 30,
-      }}>
-      <Text>Home!</Text>
-    </TouchableOpacity>
-  );
-}
-
-function SettingsScreen() {
-  return (
-    <TouchableOpacity
-      style={{
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'pink',
-        height: '90%',
-        width: '80%',
-        alignSelf: 'center',
-        borderRadius: 30,
-      }}>
-      <Text>Settings!</Text>
-    </TouchableOpacity>
-  );
-}
-
-const Tab = createMaterialTopTabNavigator();
-const Stack = createStackNavigator();
-
-function HomeStack() {
+const HomeScreen = () => {
   return (
     <>
       <StyledView>
@@ -59,29 +21,21 @@ function HomeStack() {
           </StyledTouchableOpacity>
         </StyledScrollView>
       </StyledView>
-      <Tab.Navigator
-        tabBarOptions={{
-          style: { height: 0 },
-        }}>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
-      </Tab.Navigator>
+      <StyledView2>
+        <StyledScrollView2
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}>
+          <Card title="séries"></Card>
+          <Card title="filmes"></Card>
+          <Card title="músicas"></Card>
+          <Card title="receitas"></Card>
+        </StyledScrollView2>
+      </StyledView2>
     </>
   );
-}
+};
 
-export default function App() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Home"
-        component={HomeStack}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen name="Settungs" component={SettingsScreen} />
-    </Stack.Navigator>
-  );
-}
+export default HomeScreen;
 
 const StyledView = styled.View`
   /* background-color: black; */
@@ -111,4 +65,15 @@ const StyledText = styled.Text`
   color: white;
   font-family: Kanit-Regular;
   font-size: 25;
+`;
+
+const StyledView2 = styled.View`
+  /* background-color: red; */
+  width: ${larguraDaTela};
+  height: ${alturaDaTela * 0.7};
+`;
+
+const StyledScrollView2 = styled.ScrollView`
+  /* background-color: #0f1218; */
+  flex: 1;
 `;
