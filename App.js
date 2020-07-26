@@ -30,7 +30,11 @@ function App() {
           component={LoginScreen}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="WhyHome" component={HomeScreen} />
+        <Stack.Screen
+          name="WhyHome"
+          component={HomeScreen}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

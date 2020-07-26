@@ -1,34 +1,114 @@
-import React from 'react';
-import { View, Text, Dimensions } from 'react-native';
+import * as React from 'react';
+import { Text, View, TouchableOpacity, Dimensions } from 'react-native';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
+// import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import styled from 'styled-components';
 
 const larguraDaTela = Dimensions.get('window').width;
 const alturaDaTela = Dimensions.get('window').height;
 
-const HomeScreen = ({ navigation }) => {
+function HomeScreen() {
   return (
-    <StyledView1>
-      <Text>Home</Text>
-      <LoginButton onPress={() => navigation.goBack()}>
-        <Text>Entrar</Text>
-      </LoginButton>
-    </StyledView1>
+    <TouchableOpacity
+      style={{
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'purple',
+        height: '90%',
+        width: '80%',
+        alignSelf: 'center',
+        borderRadius: 30,
+      }}>
+      <Text>Home!</Text>
+    </TouchableOpacity>
   );
-};
+}
 
-const StyledView1 = styled.View`
-  flex: 1;
-  align-items: center;
+function SettingsScreen() {
+  return (
+    <TouchableOpacity
+      style={{
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'pink',
+        height: '90%',
+        width: '80%',
+        alignSelf: 'center',
+        borderRadius: 30,
+      }}>
+      <Text>Settings!</Text>
+    </TouchableOpacity>
+  );
+}
+
+const Tab = createMaterialTopTabNavigator();
+const Stack = createStackNavigator();
+
+function HomeStack() {
+  return (
+    <>
+      <StyledView>
+        <StyledScrollView showsVerticalScrollIndicator={false}>
+          <StyledTouchableOpacity>
+            <StyledText>INÍCIO</StyledText>
+          </StyledTouchableOpacity>
+          <StyledTouchableOpacity>
+            <StyledText>CONTA</StyledText>
+          </StyledTouchableOpacity>
+        </StyledScrollView>
+      </StyledView>
+      <Tab.Navigator
+        tabBarOptions={{
+          style: { height: 0 },
+        }}>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Settings" component={SettingsScreen} />
+      </Tab.Navigator>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={HomeStack}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen name="Settungs" component={SettingsScreen} />
+    </Stack.Navigator>
+  );
+}
+
+const StyledView = styled.View`
+  /* background-color: black; */
+  width: 100%;
+  height: 20%;
   justify-content: center;
+  align-items: center;
+  margin-bottom: 10;
 `;
 
-const LoginButton = styled.TouchableOpacity`
-  background-color: #d5d4d0;
+const StyledScrollView = styled.ScrollView`
+  background-color: #0f1218;
+  max-height: ${alturaDaTela * 0.07};
+  height: ${alturaDaTela * 0.07};
+  border-radius: 15;
+  margin-top: 35;
+`;
+
+const StyledTouchableOpacity = styled.TouchableOpacity`
+  height: ${alturaDaTela * 0.07};
   width: ${larguraDaTela * 0.5};
-  height: ${alturaDaTela * 0.05};
   justify-content: center;
   align-items: center;
 `;
 
-export default HomeScreen;
+const StyledText = styled.Text`
+  color: white;
+  font-family: Kanit-Regular;
+  font-size: 25;
+`;

@@ -16,7 +16,7 @@ const RegisterScreen = ({ navigation }) => {
   const [confirmPassword, setConfirmPassword] = useState('');
 
   const signUp = () => {
-    navigation.navigate('WhyHome');
+    navigation.navigate('Login');
   };
 
   return (
