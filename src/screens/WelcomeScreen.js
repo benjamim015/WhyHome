@@ -16,7 +16,7 @@ const WelcomeScreen = ({ navigation }) => {
         <Text3>Começar</Text3>
       </LoginButton>
       <Text4>Ainda não tem uma conta?</Text4>
-      <RegisterButton>
+      <RegisterButton onPress={() => navigation.navigate('Register')}>
         <Text5>Registre-se</Text5>
       </RegisterButton>
       <Image
