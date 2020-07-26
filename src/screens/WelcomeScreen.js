@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text, View, ImageBackground } from 'react-native';
+import { Text, View, ImageBackground, Image } from 'react-native';
 import WSBackground from '../assets/welcomescreen.png';
+import WSLogo from '../assets/logo.png';
 import Dimensions from 'react-native';
 import styled from 'styled-components';
 
@@ -12,12 +13,22 @@ const WelcomeScreen = ({ navigation }) => {
       <Text1>BEM-VINDO</Text1>
       <Text2>é bom ter você conosco</Text2>
       <LoginButton>
-        <Text3>Entrar</Text3>
+        <Text3>Começar</Text3>
       </LoginButton>
       <Text4>Ainda não tem uma conta?</Text4>
       <RegisterButton>
         <Text5>Registre-se</Text5>
       </RegisterButton>
+      <Image
+        source={WSLogo}
+        style={{
+          position: 'absolute',
+          height: '30%',
+          width: '30%',
+          resizeMode: 'contain',
+          right: '5%',
+          top: '-3%',
+        }}></Image>
     </ImageBackground>
   );
 };
