@@ -6,7 +6,7 @@ export default [
     sinopse:
       'Os Peaky Blinders é uma organização criminosa de origem cigana que se passa na cidade de Birmingham, Inglaterra, em 1919, formada vários meses após o final da Primeira Guerra Mundial (1914–1918). A história é centrada na ambição do líder da gangue inglesa, Thomas "Tommy" Shelby (Cillian Murphy).',
     imagem:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUeIwg90s6NzMa0ZZmU5rXRX2Qhtn1C6b6LQK14LZSmrNNFNQs',
+      'https://cdn.ome.lt/8963QyfyUS7eHf3SrPZILPEXYds=/1200x630/smart/uploads/subtheme/images/peaky-blinders-grande_lwK93aC.jpg',
   },
   {
     nome: 'La Casa de Papel',

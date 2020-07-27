@@ -3,7 +3,7 @@ import { View, Text, Dimensions } from 'react-native';
 
 import styled from 'styled-components';
 import Header from '../components/Header';
-import Card from '../components/Card';
+import SeriesCard from '../components/SeriesCard';
 
 import mock from '../../mocks/seriesMock';
 
@@ -22,7 +22,14 @@ const SeriesScreen = () => {
           justifyContent: 'center',
         }}>
         {mock.map((res) => {
-          return <SerieCard></SerieCard>;
+          return (
+            <SeriesCard
+              cardTitle={res.nome}
+              cardImage={res.imagem}
+              cardGenres={res.genero}
+              cardYear={res.ano}
+              cardSynopsis={res.sinopse}></SeriesCard>
+          );
         })}
       </StyledScrollView>
     </View>
