@@ -2,6 +2,9 @@ import React from 'react';
 import { Dimensions } from 'react-native';
 
 import styled from 'styled-components';
+import { useNavigation } from '@react-navigation/native';
+
+import WhiteArrow from '../../assets/whiteArrow.png';
 
 const larguraDaTela = Dimensions.get('window').width;
 const alturaDaTela = Dimensions.get('window').height;
@@ -25,8 +28,13 @@ const SeriesScreen = ({ title }) => {
     justify-content: center;
   `;
 
+  const navigate = useNavigation();
+
   return (
     <StyledView>
+      <ArrowButton onPress={() => navigate.goBack()}>
+        <ArrowImage source={WhiteArrow} />
+      </ArrowButton>
       <StyledText>{title}</StyledText>
     </StyledView>
   );
@@ -39,4 +47,20 @@ const StyledText = styled.Text`
   font-size: 50;
   text-transform: uppercase;
   font-family: Kanit-Regular;
+`;
+
+const ArrowButton = styled.TouchableOpacity`
+  /* background-color: black; */
+  height: 50;
+  width: 50;
+  position: absolute;
+  left: 5;
+  top: 5;
+`;
+
+const ArrowImage = styled.Image`
+  height: 70;
+  width: 70;
+  top: -10;
+  left: -10;
 `;
