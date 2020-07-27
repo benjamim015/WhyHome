@@ -10,6 +10,7 @@ import RegisterScreen from './src/screens/RegisterScreen';
 import SeriesScreen from './src/screens/SeriesScreen';
 import SeriesCardInfoScreen from './src/screens/SeriesCardInfoScreen';
 import MoviesScreen from './src/screens/MoviesScreen';
+import RecipesScreen from './src/screens/RecipesScreen';
 
 const Stack = createStackNavigator();
 
@@ -52,6 +53,11 @@ const App = () => {
           <Stack.Screen
             name="MoviesScreen"
             component={MoviesScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="RecipesScreen"
+            component={RecipesScreen}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
