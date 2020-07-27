@@ -7,6 +7,7 @@ import WelcomeScreen from './src/screens/WelcomeScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
+import SeriesScreen from './src/screens/SeriesScreen';
 
 const Stack = createStackNavigator();
 
@@ -33,6 +34,11 @@ function App() {
         <Stack.Screen
           name="WhyHome"
           component={HomeScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SeriesScreen"
+          component={SeriesScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

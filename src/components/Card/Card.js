@@ -2,6 +2,7 @@ import React from 'react';
 import { Dimensions } from 'react-native';
 
 import styled from 'styled-components';
+import { useNavigation } from '@react-navigation/native';
 
 const larguraDaTela = Dimensions.get('window').width;
 const alturaDaTela = Dimensions.get('window').height;
@@ -12,7 +13,6 @@ const Card = ({ title }) => {
     width: ${larguraDaTela * 0.8};
     justify-content: center;
     align-items: center;
-    /* background-color: #0d1d26; */
     background-color: ${title == 'séries'
       ? '#0d1d26'
       : title == 'filmes'
@@ -27,8 +27,16 @@ const Card = ({ title }) => {
     border-radius: 20;
   `;
 
+  const { navigate } = useNavigation();
+
+  const gotoScreen = () => {
+    if (title == 'séries') {
+      navigate('SeriesScreen');
+    }
+  };
+
   return (
-    <TouchableCard>
+    <TouchableCard onPress={gotoScreen}>
       <Title>{title}</Title>
     </TouchableCard>
   );

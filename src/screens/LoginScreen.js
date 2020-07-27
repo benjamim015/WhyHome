@@ -29,7 +29,7 @@ const LoginScreen = ({ navigation }) => {
             placeholder="Senha"
             secureTextEntry={true}></InputPassword>
         </Container>
-        <LoginButton onPress={() => navigation.navigate('Login')}>
+        <LoginButton onPress={() => navigation.navigate('WhyHome')}>
           <String>Login</String>
         </LoginButton>
         <Text1>WHY HOME</Text1>

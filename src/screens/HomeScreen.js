@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions } from 'react-native';
+import { View, Dimensions } from 'react-native';
 
 import styled from 'styled-components';
 
@@ -10,7 +10,7 @@ const alturaDaTela = Dimensions.get('window').height;
 
 const HomeScreen = () => {
   return (
-    <>
+    <View style={{ flex: 1, backgroundColor: '#ffffff' }}>
       <StyledView>
         <StyledScrollView showsVerticalScrollIndicator={false}>
           <StyledTouchableOpacity>
@@ -31,14 +31,13 @@ const HomeScreen = () => {
           <Card title="receitas"></Card>
         </StyledScrollView2>
       </StyledView2>
-    </>
+    </View>
   );
 };
 
 export default HomeScreen;
 
 const StyledView = styled.View`
-  /* background-color: black; */
   width: 100%;
   height: 20%;
   justify-content: center;
@@ -68,12 +67,10 @@ const StyledText = styled.Text`
 `;
 
 const StyledView2 = styled.View`
-  /* background-color: red; */
   width: ${larguraDaTela};
   height: ${alturaDaTela * 0.7};
 `;
 
 const StyledScrollView2 = styled.ScrollView`
-  /* background-color: #0f1218; */
   flex: 1;
 `;
