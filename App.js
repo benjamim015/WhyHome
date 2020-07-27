@@ -11,6 +11,7 @@ import SeriesScreen from './src/screens/SeriesScreen';
 import SeriesCardInfoScreen from './src/screens/SeriesCardInfoScreen';
 import MoviesScreen from './src/screens/MoviesScreen';
 import RecipesScreen from './src/screens/RecipesScreen';
+import MusicsScreen from './src/screens/MusicsScreen';
 
 const Stack = createStackNavigator();
 
@@ -53,6 +54,11 @@ const App = () => {
           <Stack.Screen
             name="MoviesScreen"
             component={MoviesScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="MusicsScreen"
+            component={MusicsScreen}
             options={{ headerShown: false }}
           />
           <Stack.Screen
