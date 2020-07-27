@@ -8,16 +8,17 @@ import HomeCard from '../components/HomeCard';
 const larguraDaTela = Dimensions.get('window').width;
 const alturaDaTela = Dimensions.get('window').height;
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   return (
     <View style={{ flex: 1, backgroundColor: '#ffffff' }}>
       <StyledView>
         <StyledScrollView showsVerticalScrollIndicator={false}>
-          <StyledTouchableOpacity>
-            <StyledText>INÍCIO</StyledText>
+          <StyledTouchableOpacity
+            onPress={() => navigation.navigate('AccountScreen')}>
+            <StyledText>CONTA</StyledText>
           </StyledTouchableOpacity>
           <StyledTouchableOpacity>
-            <StyledText>CONTA</StyledText>
+            <StyledText>SOBRE</StyledText>
           </StyledTouchableOpacity>
         </StyledScrollView>
       </StyledView>

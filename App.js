@@ -12,6 +12,7 @@ import SeriesCardInfoScreen from './src/screens/SeriesCardInfoScreen';
 import MoviesScreen from './src/screens/MoviesScreen';
 import RecipesScreen from './src/screens/RecipesScreen';
 import MusicsScreen from './src/screens/MusicsScreen';
+import AccountScreen from './src/screens/AccountScreen';
 
 const Stack = createStackNavigator();
 
@@ -66,6 +67,7 @@ const App = () => {
             component={RecipesScreen}
             options={{ headerShown: false }}
           />
+          <Stack.Screen name="AccountScreen" component={AccountScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
