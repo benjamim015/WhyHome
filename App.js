@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StatusBar, ImageBackground } from 'react-native';
+import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -9,47 +9,55 @@ import HomeScreen from './src/screens/HomeScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
 import SeriesScreen from './src/screens/SeriesScreen';
 import SeriesCardInfoScreen from './src/screens/SeriesCardInfoScreen';
+import MoviesScreen from './src/screens/MoviesScreen';
 
 const Stack = createStackNavigator();
 
-function App() {
+const App = () => {
   return (
-    <NavigationContainer>
-      <StatusBar barStyle="dark-content" />
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Welcome"
-          component={WelcomeScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Register"
-          component={RegisterScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Login"
-          component={LoginScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="WhyHome"
-          component={HomeScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="SeriesScreen"
-          component={SeriesScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="SeriesCardInfoScreen"
-          component={SeriesCardInfoScreen}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <>
+      <NavigationContainer>
+        <StatusBar barStyle="dark-content" />
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Welcome"
+            component={WelcomeScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Register"
+            component={RegisterScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="WhyHome"
+            component={HomeScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SeriesScreen"
+            component={SeriesScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SeriesCardInfoScreen"
+            component={SeriesCardInfoScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="MoviesScreen"
+            component={MoviesScreen}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
-}
+};
 
 export default App;

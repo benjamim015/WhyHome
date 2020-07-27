@@ -32,6 +32,8 @@ const HomeCard = ({ title }) => {
   const gotoScreen = () => {
     if (title == 'séries') {
       navigate('SeriesScreen');
+    } else if (title == 'filmes') {
+      navigate('MoviesScreen');
     }
   };
 
