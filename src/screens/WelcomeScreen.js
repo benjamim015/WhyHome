@@ -1,10 +1,11 @@
 import React from 'react';
-import { Text, View, ImageBackground, Image } from 'react-native';
+import { Text, View, ImageBackground, Image, Dimensions } from 'react-native';
 import WSBackground from '../assets/welcomescreen.png';
 import WSLogo from '../assets/logo.png';
-import Dimensions from 'react-native';
 import styled from 'styled-components';
 
+const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
 const WelcomeScreen = ({ navigation }) => {
   return (
     <ImageBackground
@@ -12,9 +13,9 @@ const WelcomeScreen = ({ navigation }) => {
       style={{ width: '100%', height: '100%' }}>
       <Text1>BEM-VINDO</Text1>
       <Text2>é bom ter você conosco</Text2>
-      <LoginButton>
+      <StartButton>
         <Text3>Começar</Text3>
-      </LoginButton>
+      </StartButton>
       <Text4>Ainda não tem uma conta?</Text4>
       <RegisterButton onPress={() => navigation.navigate('Register')}>
         <Text5>Registre-se</Text5>
@@ -27,7 +28,7 @@ const WelcomeScreen = ({ navigation }) => {
           width: '30%',
           resizeMode: 'contain',
           right: '5%',
-          top: '-3%',
+          top: '-6.5%',
         }}></Image>
     </ImageBackground>
   );
@@ -37,15 +38,15 @@ const Text1 = styled.Text`
   font-family: Kanit-Regular;
   color: #000000;
   font-size: 40;
-  margin-top: 40;
-  margin-left: 15;
+  top: 2.5%;
+  left: 4.7%;
 `;
 
 const Text2 = styled.Text`
   font-size: 18.5;
-  margin-top: -12.5;
+  top: 0.7%;
   color: #000000;
-  margin-left: 18;
+  left: 5.4%;
   font-family: Kanit-Regular;
 `;
 
@@ -59,8 +60,8 @@ const Text4 = styled.Text`
   font-family: Kanit-Regular;
   color: #ffffff;
   font-size: 15.8;
-  margin-top: 295;
-  margin-left: 11;
+  top: 76.5%;
+  left: 3.6%;
 `;
 
 const Text5 = styled.Text`
@@ -71,21 +72,21 @@ const Text5 = styled.Text`
 
 const RegisterButton = styled.TouchableOpacity`
   width: 85;
-  margin-top: -22.5;
-  margin-left: 206;
+  top: 73.07%;
+  left: 57.2%;
   justify-content: center;
   align-items: center;
 `;
 
-const LoginButton = styled.TouchableOpacity`
+const StartButton = styled.TouchableOpacity`
   background-color: #000000;
-  width: 150;
-  height: 35;
+  width: ${screenWidth * 0.4};
+  height: ${screenHeight * 0.05};
   justify-content: center;
   align-items: center;
   border-radius: 35;
-  margin-left: 200;
-  margin-top: 168;
+  left: 57%;
+  top: 28%;
 `;
 
 export default WelcomeScreen;
