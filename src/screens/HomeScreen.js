@@ -3,7 +3,7 @@ import { View, Dimensions } from 'react-native';
 
 import styled from 'styled-components';
 
-import Card from '../components/Card';
+import HomeCard from '../components/HomeCard';
 
 const larguraDaTela = Dimensions.get('window').width;
 const alturaDaTela = Dimensions.get('window').height;
@@ -25,10 +25,10 @@ const HomeScreen = () => {
         <StyledScrollView2
           horizontal={true}
           showsHorizontalScrollIndicator={false}>
-          <Card title="séries"></Card>
-          <Card title="filmes"></Card>
-          <Card title="músicas"></Card>
-          <Card title="receitas"></Card>
+          <HomeCard title="séries"></HomeCard>
+          <HomeCard title="filmes"></HomeCard>
+          <HomeCard title="músicas"></HomeCard>
+          <HomeCard title="receitas"></HomeCard>
         </StyledScrollView2>
       </StyledView2>
     </View>

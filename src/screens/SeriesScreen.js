@@ -2,8 +2,8 @@ import React from 'react';
 import { View, Text, Dimensions } from 'react-native';
 
 import styled from 'styled-components';
-import Card from '../components/Card';
 import Header from '../components/Header';
+import Card from '../components/Card';
 
 import mock from '../../mocks/seriesMock';
 
@@ -30,21 +30,6 @@ const SeriesScreen = () => {
 };
 
 export default SeriesScreen;
-
-const StyledText = styled.Text`
-  color: #ffffff;
-  font-size: 50;
-`;
-
-const StyledView = styled.View`
-  background-color: #0d1d26;
-  width: ${larguraDaTela};
-  height: ${alturaDaTela * 0.15};
-  border-bottom-left-radius: 30;
-  border-bottom-right-radius: 30;
-  align-items: center;
-  justify-content: center;
-`;
 
 const StyledScrollView = styled.ScrollView`
   width: ${larguraDaTela};
