@@ -15,7 +15,6 @@ const WelcomeScreen = ({ navigation }) => {
       <View style={{ height: '50%' }}>
         <View
           style={{
-            // backgroundColor: 'purple',
             marginTop: 50,
             flexDirection: 'row-reverse',
           }}>
@@ -40,7 +39,6 @@ const WelcomeScreen = ({ navigation }) => {
         style={{
           flexDirection: 'row',
           alignItems: 'flex-end',
-          // backgroundColor: 'black',
           flex: 1,
           alignSelf: 'flex-start',
           marginBottom: 10,
