@@ -22,7 +22,9 @@ const LoginScreen = ({ navigation }) => {
     <ImageBackground
       source={LSBackground}
       style={{ width: '100%', height: '100%' }}>
-      <View>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Text1>WHY HOME</Text1>
+        <PeopleImg source={LSPeople}></PeopleImg>
         <Container>
           <InputEmail placeholder="Email"></InputEmail>
           <InputPassword
@@ -32,8 +34,6 @@ const LoginScreen = ({ navigation }) => {
         <LoginButton onPress={() => navigation.navigate('WhyHome')}>
           <String>Login</String>
         </LoginButton>
-        <Text1>WHY HOME</Text1>
-        <PeopleImg source={LSPeople}></PeopleImg>
       </View>
     </ImageBackground>
   );
@@ -42,12 +42,8 @@ const LoginScreen = ({ navigation }) => {
 const PeopleImg = styled.Image`
   width: ${screenWidth * 0.4};
   height: ${screenHeight * 0.2};
-  top: -12%;
-  margin: 0 auto;
 `;
 const Text1 = styled.Text`
-  margin: 0 auto;
-  top: -22.5%;
   font-size: 40;
   font-family: Kanit-Regular;
 `;
@@ -59,11 +55,10 @@ const InputEmail = styled.TextInput`
   border-color: #cccccc;
   border-width: 1;
   border-radius: 16;
-  top: 350%;
-  margin: 0 auto;
   width: ${screenWidth * 0.55};
   height: ${screenHeight * 0.06};
   font-family: Kanit-Regular;
+  margin-bottom: 10;
 `;
 
 const InputPassword = styled.TextInput`
@@ -71,18 +66,16 @@ const InputPassword = styled.TextInput`
   border-color: #cccccc;
   border-width: 1;
   border-radius: 16;
-  top: 360%;
   margin: 0 auto;
   width: ${screenWidth * 0.55};
   height: ${screenHeight * 0.06};
   font-family: Kanit-Regular;
+  margin-bottom: 10;
 `;
 
 const LoginButton = styled.TouchableOpacity`
   width: ${screenWidth * 0.3};
   height: ${screenHeight * 0.04};
-  top: 101%;
-  left: 23%;
   border-radius: 16;
   background-color: #000000;
   justify-content: center;

@@ -16,10 +16,12 @@ const WelcomeScreen = ({ navigation }) => {
       <StartButton>
         <Text3>Começar</Text3>
       </StartButton>
-      <Text4>Ainda não tem uma conta?</Text4>
-      <RegisterButton onPress={() => navigation.navigate('Register')}>
-        <Text5>Registre-se</Text5>
-      </RegisterButton>
+      <View style={{ flexDirection: 'row', flex: 1, alignItems: 'flex-end' }}>
+        <Text4>Ainda não tem uma conta?</Text4>
+        <RegisterButton onPress={() => navigation.navigate('Register')}>
+          <Text5>Registre-se</Text5>
+        </RegisterButton>
+      </View>
       <LogoImage
         source={WSLogo}
         style={{
@@ -56,8 +58,6 @@ const Text4 = styled.Text`
   font-family: Kanit-Regular;
   color: #ffffff;
   font-size: 15.8;
-  top: 76.5%;
-  left: 3.6%;
 `;
 
 const Text5 = styled.Text`
@@ -69,8 +69,6 @@ const Text5 = styled.Text`
 const RegisterButton = styled.TouchableOpacity`
   width: ${screenWidth * 0.3};
   height: ${screenHeight * 0.035};
-  top: 73.05%;
-  left: 54.3%;
   justify-content: center;
   align-items: center;
 `;
