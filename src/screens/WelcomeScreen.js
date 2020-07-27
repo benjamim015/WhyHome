@@ -20,16 +20,12 @@ const WelcomeScreen = ({ navigation }) => {
       <RegisterButton onPress={() => navigation.navigate('Register')}>
         <Text5>Registre-se</Text5>
       </RegisterButton>
-      <Image
+      <LogoImage
         source={WSLogo}
         style={{
           position: 'absolute',
-          height: '30%',
-          width: '30%',
           resizeMode: 'contain',
-          right: '5%',
-          top: '-6.5%',
-        }}></Image>
+        }}></LogoImage>
     </ImageBackground>
   );
 };
@@ -71,9 +67,10 @@ const Text5 = styled.Text`
 `;
 
 const RegisterButton = styled.TouchableOpacity`
-  width: 85;
-  top: 73.07%;
-  left: 57.2%;
+  width: ${screenWidth * 0.3};
+  height: ${screenHeight * 0.035};
+  top: 73.05%;
+  left: 54.3%;
   justify-content: center;
   align-items: center;
 `;
@@ -87,6 +84,13 @@ const StartButton = styled.TouchableOpacity`
   border-radius: 35;
   left: 57%;
   top: 28%;
+`;
+
+const LogoImage = styled.Image`
+  width: ${screenWidth * 0.4};
+  height: ${screenHeight * 0.075};
+  top: 5%;
+  right: -1%;
 `;
 
 export default WelcomeScreen;
