@@ -1,14 +1,56 @@
 import React from 'react';
 import { Text, View, ImageBackground, Image, Dimensions } from 'react-native';
-import WSBackground from '../assets/welcomescreen.png';
-import WSLogo from '../assets/logo.png';
 import styled from 'styled-components';
+import peopleimg from '../assets/peopleimg.png';
+import arrowimg from '../assets/whiteArrow.png';
 
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
 
 const AccountScreen = ({ navigation }) => {
-  return <Text>MINHA CONTA</Text>;
+  return (
+    <RedBG style={{ height: '32%', width: '100%' }}>
+      <Image3 source={arrowimg}></Image3>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <PeopleImg source={peopleimg}></PeopleImg>
+        <Text1>USER:</Text1>
+        <Text2>EMAIL:</Text2>
+      </View>
+    </RedBG>
+  );
 };
+
+const RedBG = styled.View`
+  background-color: rgba(242, 7, 50, 0.9);
+`;
+
+const PeopleImg = styled.Image`
+  width: ${screenWidth * 0.22};
+  height: ${screenHeight * 0.13};
+  margin-top: -100;
+  margin-left: -210;
+`;
+
+const Text1 = styled.Text`
+  margin-top: -60;
+  margin-left: 70;
+  font-size: 13;
+  font-family: Kanit-Regular;
+  color: #ffffff;
+`;
+
+const Text2 = styled.Text`
+  margin-top: -45;
+  margin-left: 75;
+  font-size: 13;
+  font-family: Kanit-Regular;
+  color: #ffffff;
+`;
+
+const Image3 = styled.Image`
+  margin-top: 10;
+  width: ${screenWidth * 0.2};
+  height: ${screenHeight * 0.07};
+`;
 
 export default AccountScreen;

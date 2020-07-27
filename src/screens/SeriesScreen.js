@@ -4,7 +4,6 @@ import { View, Text, Dimensions } from 'react-native';
 import styled from 'styled-components';
 import Header from '../components/Header';
 import SeriesCard from '../components/SeriesCard';
-
 import mock from '../../mocks/seriesMock';
 
 // console.log('mock:', mock[0]);

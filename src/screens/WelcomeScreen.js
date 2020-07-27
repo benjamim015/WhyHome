@@ -23,13 +23,13 @@ const WelcomeScreen = ({ navigation }) => {
             <Text1>BEM-VINDO</Text1>
             <Text2>é bom ter você conosco</Text2>
           </View>
-          {/* <LogoImage source={WSLogo}></LogoImage> */}
+          <LogoImage source={WSLogo}></LogoImage>
         </View>
         <View
           style={{
             justifyContent: 'flex-end',
             alignItems: 'flex-end',
-            marginTop: 180,
+            marginTop: 130,
             width: '100%',
           }}>
           <StartButton onPress={() => navigation.navigate('Login')}>
@@ -94,8 +94,8 @@ const Text5 = styled.Text`
 `;
 
 const RegisterButton = styled.TouchableOpacity`
-  width: ${screenWidth * 0.3};
-  height: ${screenHeight * 0.035};
+  width: ${screenWidth * 0.32};
+  height: ${screenHeight * 0.037};
   justify-content: center;
   align-items: center;
 `;
@@ -107,12 +107,12 @@ const StartButton = styled.TouchableOpacity`
   border-radius: 100;
   justify-content: center;
   align-items: center;
-  margin-right: 20;
+  margin-right: 16;
 `;
 
 const LogoImage = styled.Image`
-  width: ${screenWidth * 0.4};
-  height: ${screenHeight * 0.075};
+  width: ${screenWidth * 0.1};
+  height: ${screenHeight * 0.1};
 `;
 
 export default WelcomeScreen;
