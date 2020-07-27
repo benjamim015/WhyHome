@@ -23,7 +23,6 @@ const WelcomeScreen = ({ navigation }) => {
             <Text1>BEM-VINDO</Text1>
             <Text2>é bom ter você conosco</Text2>
           </View>
-          <LogoImage source={WSLogo}></LogoImage>
         </View>
         <View
           style={{
@@ -108,11 +107,6 @@ const StartButton = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   margin-right: 16;
-`;
-
-const LogoImage = styled.Image`
-  width: ${screenWidth * 0.1};
-  height: ${screenHeight * 0.1};
 `;
 
 export default WelcomeScreen;
