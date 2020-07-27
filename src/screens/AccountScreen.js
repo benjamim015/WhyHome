@@ -8,7 +8,7 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const AccountScreen = ({ navigation }) => {
-  return <Text>123</Text>;
+  return <Text>MINHA CONTA</Text>;
 };
 
 export default AccountScreen;

@@ -17,7 +17,8 @@ const HomeScreen = ({ navigation }) => {
             onPress={() => navigation.navigate('AccountScreen')}>
             <StyledText>CONTA</StyledText>
           </StyledTouchableOpacity>
-          <StyledTouchableOpacity>
+          <StyledTouchableOpacity
+            onPress={() => navigation.navigate('AboutScreen')}>
             <StyledText>SOBRE</StyledText>
           </StyledTouchableOpacity>
         </StyledScrollView>
