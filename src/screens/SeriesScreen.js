@@ -13,16 +13,18 @@ const { url } = require('../config/url');
 const larguraDaTela = Dimensions.get('window').width;
 const alturaDaTela = Dimensions.get('window').height;
 
-const SeriesScreen = () => {
+const SeriesScreen = ({ navigation }) => {
   const [series, setSeries] = useState([]);
 
-  useEffect(async () => {
-    const res = await fetch(
-      'https://rest-api-whyhome.herokuapp.com/series/getAll',
-    );
-    const data = await res.json();
+  useEffect(() => {
+    (async () => {
+      const res = await fetch(
+        'https://rest-api-whyhome.herokuapp.com/series/getAll',
+      );
+      const data = await res.json();
 
-    setSeries(data.series.series);
+      setSeries(data.series.series);
+    })();
   }, []);
 
   return (

@@ -26,7 +26,6 @@ const SeriesScreen = ({ title }) => {
     border-bottom-right-radius: 30;
     align-items: center;
     justify-content: center;
-    margin-bottom: 10;
   `;
 
   const navigate = useNavigation();
