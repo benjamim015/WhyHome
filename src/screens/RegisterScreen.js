@@ -17,39 +17,7 @@ const RegisterScreen = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  // async function signUp(name, surname, email, password) {
-  //   // console.log('ASDASDASDASD', name);
-  //   await fetch(`${url}/users/signUp`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'content-type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       name: name,
-  //       surname: surname,
-  //       email: email,
-  //       password: password,
-  //     }),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((res) => {
-  //       if (res.response == null) {
-  //         Alert.alert('Erro!', '', [
-  //           {
-  //             text: 'OK',
-  //             style: 'cancel',
-  //           },
-  //         ]);
-  //       } else {
-  //         Alert.alert('Conta criada com sucesso!', 'user added', [
-  //           {
-  //             text: 'OK',
-  //             style: 'cancel',
-  //           },
-  //         ]);
-  //       }
-  //     });
-  // }
+  let errors = '';
 
   return (
     <BackgroundImage source={ResgisterBackgroundImage}>
@@ -96,47 +64,61 @@ const RegisterScreen = ({ navigation }) => {
             }></StyledTextInput>
           <RegisterButton
             onPress={async () => {
-              // const user = {
-              //   name: name,
-              //   surname: surname,
-              //   email: email,
-              //   password: password,
-              // };
+              if (name === '') errors += 'Preencha o campo de nome! \n';
+              if (surname === '') errors += 'Preencha o campo de sobrenome! \n';
+              if (email === '') errors += 'Preencha o campo de email! \n';
+              if (password === '') errors += 'Preencha o campo de senha! \n';
+              if (confirmPassword === '')
+                errors += 'Preencha o campo de confirmar senha \n';
 
-              // console.log(user);
-
-              await fetch(`${url}/users/signUp`, {
-                method: 'POST',
-                headers: {
-                  'content-type': 'application/json',
-                },
-                body: JSON.stringify({
-                  name: name,
-                  surname: surname,
-                  email: email,
-                  password: password,
-                }),
-              })
-                .then((response) => response.json())
-                .then((res) => {
-                  console.log(res.response);
-                  if (res.response === null) {
-                    Alert.alert('Erro!', '', [
+              if (errors !== '') {
+                Alert.alert('Erro!', errors, [
+                  {
+                    text: 'OK',
+                    style: 'Cancel',
+                  },
+                ]);
+                errors = '';
+              } else {
+                if (password !== confirmPassword) {
+                  Alert.alert(
+                    'Erro!',
+                    'Confirmar Senha está diferente de Senha!',
+                    [
                       {
                         text: 'OK',
-                        style: 'cancel',
+                        style: 'Cancel',
                       },
-                    ]);
-                  } else {
-                    Alert.alert('Conta criada com sucesso!', 'user added', [
-                      {
-                        text: 'OK',
-                        style: 'cancel',
-                      },
-                    ]);
-                    navigation.navigate('Login');
-                  }
-                });
+                    ],
+                  );
+                } else {
+                  await fetch(`${url}/users/signUp`, {
+                    method: 'POST',
+                    headers: {
+                      'content-type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                      name: name,
+                      surname: surname,
+                      email: email,
+                      password: password,
+                    }),
+                  })
+                    .then((response) => response.json())
+                    .then((res) => {
+                      console.log(res.response);
+                      if (res.response !== null) {
+                        Alert.alert('Conta criada com sucesso!', '', [
+                          {
+                            text: 'OK',
+                            style: 'cancel',
+                          },
+                        ]);
+                        navigation.navigate('Login');
+                      }
+                    });
+                }
+              }
             }}>
             <RegisterText>Registrar</RegisterText>
           </RegisterButton>

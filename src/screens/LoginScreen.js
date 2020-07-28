@@ -14,6 +14,8 @@ const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  let errors = '';
+
   return (
     <ImageBackground
       source={LSBackground}
@@ -39,29 +41,42 @@ const LoginScreen = ({ navigation }) => {
             }></StyledTextInput>
           <LoginButton
             onPress={async () => {
-              await fetch(`${url}/users/login`, {
-                method: 'POST',
-                headers: {
-                  'content-type': 'application/json',
-                },
-                body: JSON.stringify({
-                  email: email,
-                  password: password,
-                }),
-              })
-                .then((response) => response.json())
-                .then((res) => {
-                  if (res.response === null) {
-                    Alert.alert('Erro!', 'Falha na autenticação', [
-                      {
-                        text: 'OK',
-                        style: 'cancel',
-                      },
-                    ]);
-                  } else {
-                    navigation.navigate('WhyHomeaaa');
-                  }
-                });
+              if (email === '') errors += 'Preencha o campo de email! \n';
+              if (password === '') errors += 'Preencha o campo de senha! \n';
+
+              if (errors !== '') {
+                Alert.alert('Erro!', errors, [
+                  {
+                    text: 'OK',
+                    style: 'Cancel',
+                  },
+                ]);
+                errors = '';
+              } else {
+                await fetch(`${url}/users/login`, {
+                  method: 'POST',
+                  headers: {
+                    'content-type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    email: email,
+                    password: password,
+                  }),
+                })
+                  .then((response) => response.json())
+                  .then((res) => {
+                    if (res.response === null) {
+                      Alert.alert('Erro!', 'Falha na autenticação', [
+                        {
+                          text: 'OK',
+                          style: 'cancel',
+                        },
+                      ]);
+                    } else {
+                      navigation.navigate('WhyHome');
+                    }
+                  });
+              }
             }}>
             <String>Login</String>
           </LoginButton>

@@ -18,75 +18,71 @@ import MusicsScreen from './src/screens/MusicsScreen';
 import AccountScreen from './src/screens/AccountScreen';
 import AboutScreen from './src/screens/AboutScreen';
 
-import store from './src/store';
-
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
     <>
-      <Provider store={store}>
-        <NavigationContainer>
-          <StatusBar barStyle="dark-content" />
-          <Stack.Navigator>
-            <Stack.Screen
-              name="Welcome"
-              component={WelcomeScreen}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Register"
-              component={RegisterScreen}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Login"
-              component={LoginScreen}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="WhyHome"
-              component={HomeScreen}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="SeriesScreen"
-              component={SeriesScreen}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="SeriesCardInfoScreen"
-              component={SeriesCardInfoScreen}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="MoviesScreen"
-              component={MoviesScreen}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="MusicsScreen"
-              component={MusicsScreen}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="RecipesScreen"
-              component={RecipesScreen}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="AboutScreen"
-              component={AboutScreen}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="AccountScreen"
-              component={AccountScreen}
-              options={{ headerShown: false }}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </Provider>
+      <NavigationContainer>
+        <StatusBar barStyle="dark-content" />
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Welcome"
+            component={WelcomeScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Register"
+            component={RegisterScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Login"
+            component={LoginScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="WhyHome"
+            component={HomeScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SeriesScreen"
+            component={SeriesScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SeriesCardInfoScreen"
+            component={SeriesCardInfoScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="MoviesScreen"
+            component={MoviesScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="MusicsScreen"
+            component={MusicsScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="RecipesScreen"
+            component={RecipesScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="AboutScreen"
+            component={AboutScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="AccountScreen"
+            component={AccountScreen}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
     </>
   );
 };
