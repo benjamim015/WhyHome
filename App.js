@@ -13,6 +13,7 @@ import RegisterScreen from './src/screens/RegisterScreen';
 import SeriesScreen from './src/screens/SeriesScreen';
 import SeriesCardInfoScreen from './src/screens/SeriesCardInfoScreen';
 import MoviesScreen from './src/screens/MoviesScreen';
+import MoviesCardInfoScreen from './src/screens/MoviesCardInfoScreen';
 import RecipesScreen from './src/screens/RecipesScreen';
 import MusicsScreen from './src/screens/MusicsScreen';
 import AccountScreen from './src/screens/AccountScreen';
@@ -79,6 +80,11 @@ const App = () => {
           <Stack.Screen
             name="AccountScreen"
             component={AccountScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="MoviesCardInfoScreen"
+            component={MoviesCardInfoScreen}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
