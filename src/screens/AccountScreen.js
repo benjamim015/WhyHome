@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, ImageBackground, Image, Dimensions } from 'react-native';
+import { View, Dimensions } from 'react-native';
 import styled from 'styled-components';
 import peopleimg from '../assets/peopleimg.png';
 import arrowimg from '../assets/whiteArrow.png';
@@ -10,7 +10,9 @@ const screenHeight = Dimensions.get('window').height;
 const AccountScreen = ({ navigation }) => {
   return (
     <RedBG style={{ height: '32%', width: '100%' }}>
-      <Image3 source={arrowimg}></Image3>
+      <ArrowButton onPress={() => navigation.navigate('WhyHome')}>
+        <Image3 source={arrowimg}></Image3>
+      </ArrowButton>
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <PeopleImg source={peopleimg}></PeopleImg>
         <Text1>USER:</Text1>
@@ -52,5 +54,7 @@ const Image3 = styled.Image`
   width: ${screenWidth * 0.2};
   height: ${screenHeight * 0.07};
 `;
+
+const ArrowButton = styled.TouchableOpacity``;
 
 export default AccountScreen;

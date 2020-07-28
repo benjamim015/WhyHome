@@ -9,7 +9,9 @@ const windowHeight = Dimensions.get('window').height;
 const AboutScreen = ({ navigation }) => {
   return (
     <Background style={{ height: '100%', width: '100%' }}>
-      <ArrowImg source={arrowimg}></ArrowImg>
+      <ArrowButton onPress={() => navigation.navigate('WhyHome')}>
+        <ArrowImg source={arrowimg}></ArrowImg>
+      </ArrowButton>
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text1>Project for Hackathon</Text1>
         <Text2>Call For Code</Text2>
@@ -43,5 +45,7 @@ const ArrowImg = styled.Image`
   width: ${windowWidth * 0.24};
   height: ${windowHeight * 0.06};
 `;
+
+const ArrowButton = styled.TouchableOpacity``;
 
 export default AboutScreen;
