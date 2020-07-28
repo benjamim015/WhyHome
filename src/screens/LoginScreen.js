@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { View, Dimensions, ImageBackground } from 'react-native';
+import { View, Dimensions, ImageBackground, Alert } from 'react-native';
 
 import styled from 'styled-components';
 import LSBackground from '../assets/loginscreen.png';
 import LSPeople from '../assets/loginscreenpeople.png';
+
+const { url } = require('../config/url');
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -11,10 +13,6 @@ const screenHeight = Dimensions.get('window').height;
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const login = () => {
-    navigation.navigate('WhyHome');
-  };
 
   return (
     <ImageBackground
@@ -28,11 +26,43 @@ const LoginScreen = ({ navigation }) => {
         }}>
         <PeopleImg source={LSPeople}></PeopleImg>
         <Container>
-          <StyledTextInput placeholder="Email"></StyledTextInput>
+          <StyledTextInput
+            placeholder="Email"
+            value={email}
+            onChangeText={(newEmail) => setEmail(newEmail)}></StyledTextInput>
           <StyledTextInput
             placeholder="Senha"
-            secureTextEntry={true}></StyledTextInput>
-          <LoginButton onPress={login}>
+            secureTextEntry={true}
+            value={password}
+            onChangeText={(newPassword) =>
+              setPassword(newPassword)
+            }></StyledTextInput>
+          <LoginButton
+            onPress={async () => {
+              await fetch(`${url}/users/login`, {
+                method: 'POST',
+                headers: {
+                  'content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                  email: email,
+                  password: password,
+                }),
+              })
+                .then((response) => response.json())
+                .then((res) => {
+                  if (res.response === null) {
+                    Alert.alert('Erro!', 'Falha na autenticação', [
+                      {
+                        text: 'OK',
+                        style: 'cancel',
+                      },
+                    ]);
+                  } else {
+                    navigation.navigate('WhyHomeaaa');
+                  }
+                });
+            }}>
             <String>Login</String>
           </LoginButton>
         </Container>

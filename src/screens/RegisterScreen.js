@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, Dimensions, ImageBackground, Image } from 'react-native';
+import { Alert, Dimensions, ImageBackground, Image } from 'react-native';
 
 import styled from 'styled-components';
 import ResgisterBackgroundImage from '../assets/registerScreen.png';
 import ArrowBackImage from '../assets/arrow.png';
+
+const { url } = require('../config/url');
 
 const larguraDaTela = Dimensions.get('window').width;
 const alturaDaTela = Dimensions.get('window').height;
@@ -15,9 +17,39 @@ const RegisterScreen = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const signUp = () => {
-    navigation.navigate('Login');
-  };
+  // async function signUp(name, surname, email, password) {
+  //   // console.log('ASDASDASDASD', name);
+  //   await fetch(`${url}/users/signUp`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'content-type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       name: name,
+  //       surname: surname,
+  //       email: email,
+  //       password: password,
+  //     }),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((res) => {
+  //       if (res.response == null) {
+  //         Alert.alert('Erro!', '', [
+  //           {
+  //             text: 'OK',
+  //             style: 'cancel',
+  //           },
+  //         ]);
+  //       } else {
+  //         Alert.alert('Conta criada com sucesso!', 'user added', [
+  //           {
+  //             text: 'OK',
+  //             style: 'cancel',
+  //           },
+  //         ]);
+  //       }
+  //     });
+  // }
 
   return (
     <BackgroundImage source={ResgisterBackgroundImage}>
@@ -62,7 +94,50 @@ const RegisterScreen = ({ navigation }) => {
             onChangeText={(newConfirmPassword) =>
               setConfirmPassword(newConfirmPassword)
             }></StyledTextInput>
-          <RegisterButton onPress={signUp}>
+          <RegisterButton
+            onPress={async () => {
+              // const user = {
+              //   name: name,
+              //   surname: surname,
+              //   email: email,
+              //   password: password,
+              // };
+
+              // console.log(user);
+
+              await fetch(`${url}/users/signUp`, {
+                method: 'POST',
+                headers: {
+                  'content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                  name: name,
+                  surname: surname,
+                  email: email,
+                  password: password,
+                }),
+              })
+                .then((response) => response.json())
+                .then((res) => {
+                  console.log(res.response);
+                  if (res.response === null) {
+                    Alert.alert('Erro!', '', [
+                      {
+                        text: 'OK',
+                        style: 'cancel',
+                      },
+                    ]);
+                  } else {
+                    Alert.alert('Conta criada com sucesso!', 'user added', [
+                      {
+                        text: 'OK',
+                        style: 'cancel',
+                      },
+                    ]);
+                    navigation.navigate('Login');
+                  }
+                });
+            }}>
             <RegisterText>Registrar</RegisterText>
           </RegisterButton>
         </Container>
