@@ -7,7 +7,10 @@ import arrowimg from '../assets/whiteArrow.png';
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
-const AccountScreen = ({ navigation }) => {
+const AccountScreen = ({ route, navigation }) => {
+  const { email } = route.params;
+  const { name } = route.params;
+
   return (
     <RedBG style={{ height: '32%', width: '100%' }}>
       <ArrowButton onPress={() => navigation.navigate('WhyHome')}>
@@ -15,8 +18,8 @@ const AccountScreen = ({ navigation }) => {
       </ArrowButton>
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <PeopleImg source={peopleimg}></PeopleImg>
-        <Text1>USER:</Text1>
-        <Text2>EMAIL:</Text2>
+        <Text1>USER: {name}</Text1>
+        <Text2>EMAIL: {email}</Text2>
       </View>
     </RedBG>
   );
