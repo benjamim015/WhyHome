@@ -8,13 +8,21 @@ import HomeCard from '../components/HomeCard';
 const larguraDaTela = Dimensions.get('window').width;
 const alturaDaTela = Dimensions.get('window').height;
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({ route, navigation }) => {
+  const { email } = route.params;
+  const { name } = route.params;
+
   return (
     <View style={{ flex: 1, backgroundColor: '#ffffff' }}>
       <StyledView>
         <StyledScrollView showsVerticalScrollIndicator={false}>
           <StyledTouchableOpacity
-            onPress={() => navigation.navigate('AccountScreen')}>
+            onPress={() =>
+              navigation.navigate('AccountScreen', {
+                email: email,
+                name: name,
+              })
+            }>
             <StyledText>CONTA</StyledText>
           </StyledTouchableOpacity>
           <StyledTouchableOpacity

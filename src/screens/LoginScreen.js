@@ -77,7 +77,10 @@ const LoginScreen = ({ navigation }) => {
                         },
                       ]);
                     } else {
-                      navigation.navigate('WhyHome');
+                      navigation.navigate('WhyHome', {
+                        email: res.data._id,
+                        name: res.data.name,
+                      });
                     }
                   });
               }
