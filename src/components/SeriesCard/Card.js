@@ -7,7 +7,15 @@ import { useNavigation } from '@react-navigation/native';
 const larguraDaTela = Dimensions.get('window').width;
 const alturaDaTela = Dimensions.get('window').height;
 
-const Card = ({ cardTitle, cardImage, cardYear, cardGenres, cardSynopsis }) => {
+const Card = ({
+  cardTitle,
+  cardImage,
+  cardYear,
+  cardGenres,
+  cardSynopsis,
+  cardRestriction,
+  cardRating,
+}) => {
   const { navigate } = useNavigation();
 
   const gotoInfoScreen = () => {
@@ -17,6 +25,8 @@ const Card = ({ cardTitle, cardImage, cardYear, cardGenres, cardSynopsis }) => {
       year: cardYear,
       genres: cardGenres,
       synopsis: cardSynopsis,
+      restriction: cardRestriction,
+      rating: cardRating,
     });
   };
 
@@ -26,6 +36,7 @@ const Card = ({ cardTitle, cardImage, cardYear, cardGenres, cardSynopsis }) => {
         source={{
           uri: cardImage,
         }}></ImageCard>
+      <OverlayCard></OverlayCard>
       <TitleText>{cardTitle}</TitleText>
     </SerieCard>
   );
@@ -37,7 +48,8 @@ const SerieCard = styled.TouchableOpacity`
   background-color: #025373;
   width: ${larguraDaTela * 0.9};
   height: ${alturaDaTela * 0.15};
-  margin-top: 20;
+  margin-top: 10;
+  margin-bottom: 10;
   border-radius: 25;
   justify-content: center;
   align-items: center;
@@ -49,9 +61,18 @@ const ImageCard = styled.Image`
   border-radius: 25;
 `;
 
+const OverlayCard = styled.View`
+  width: 100%;
+  height: 100%;
+  border-radius: 25;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+`;
+
 const TitleText = styled.Text`
   position: absolute;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.8);
   font-size: 40;
   font-family: Kanit-Regular;
+  text-align: center;
 `;

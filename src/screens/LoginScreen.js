@@ -11,8 +11,8 @@ const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 const LoginScreen = ({ navigation }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('a');
+  const [password, setPassword] = useState('a');
 
   let errors = '';
 
@@ -30,12 +30,16 @@ const LoginScreen = ({ navigation }) => {
         <Container>
           <StyledTextInput
             placeholder="Email"
+            placeholderTextColor="#cccccc"
             value={email}
+            autoCapitalize="none"
             onChangeText={(newEmail) => setEmail(newEmail)}></StyledTextInput>
           <StyledTextInput
             placeholder="Senha"
+            placeholderTextColor="#cccccc"
             secureTextEntry={true}
             value={password}
+            autoCapitalize="none"
             onChangeText={(newPassword) =>
               setPassword(newPassword)
             }></StyledTextInput>
