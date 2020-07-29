@@ -15,6 +15,9 @@ const Card = ({
   cardSynopsis,
   cardRestriction,
   cardRating,
+  myList,
+  token,
+  email,
 }) => {
   const { navigate } = useNavigation();
 
@@ -27,6 +30,9 @@ const Card = ({
       synopsis: cardSynopsis,
       restriction: cardRestriction,
       rating: cardRating,
+      myList: myList,
+      token: token,
+      email: email,
     });
   };
 

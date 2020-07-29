@@ -18,7 +18,7 @@ const HomeCard = ({ myList, token, email, title }) => {
       ? '#0d1d26'
       : title == 'filmes'
       ? '#F20732 '
-      : title == 'receitas'
+      : title == 'livros'
       ? '#025373'
       : title == 'músicas'
       ? '#025E73'
@@ -34,11 +34,11 @@ const HomeCard = ({ myList, token, email, title }) => {
     if (title == 'séries') {
       navigate('SeriesScreen', { myList, token, email });
     } else if (title == 'filmes') {
-      navigate('MoviesScreen');
-    } else if (title == 'receitas') {
-      navigate('RecipesScreen');
+      navigate('MoviesScreen', { myList, token, email });
+    } else if (title == 'livros') {
+      navigate('RecipesScreen', { myList, token, email });
     } else if (title == 'músicas') {
-      navigate('MusicsScreen');
+      navigate('MusicsScreen', { myList, token, email });
     }
   };
 

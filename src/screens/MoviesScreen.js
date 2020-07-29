@@ -10,8 +10,13 @@ const { url } = require('../config/url');
 const larguraDaTela = Dimensions.get('window').width;
 const alturaDaTela = Dimensions.get('window').height;
 
-const MoviesScreen = ({ navigation }) => {
+const MoviesScreen = ({ route, navigation }) => {
   const [movies, setMovies] = useState([]);
+  // console.log(route);
+  const { myList } = route.params;
+  const { token } = route.params;
+  const { email } = route.params;
+
   useEffect(() => {
     (async () => {
       const res = await fetch(
@@ -41,6 +46,9 @@ const MoviesScreen = ({ navigation }) => {
               cardSynopsis={res.sinopse}
               cardRestriction={res.restricao}
               cardRating={res.imdbRating}
+              myList={myList}
+              token={token}
+              email={email}
             />
           );
         })}

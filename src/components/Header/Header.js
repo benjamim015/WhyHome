@@ -15,7 +15,7 @@ const SeriesScreen = ({ title }) => {
       ? '#0d1d26'
       : title == 'filmes'
       ? '#F20732 '
-      : title == 'receitas'
+      : title == 'livros'
       ? '#025373'
       : title == 'músicas'
       ? '#025E73'

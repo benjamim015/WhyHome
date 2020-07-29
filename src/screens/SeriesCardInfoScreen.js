@@ -7,8 +7,6 @@ import Card from '../components/SeriesCard';
 import addToListIcon from '../assets/plus.png';
 import checkIcon from '../assets/check.png';
 
-import mock from '../../mocks/seriesMock';
-
 const { url } = require('../config/url');
 
 const larguraDaTela = Dimensions.get('window').width;
@@ -35,8 +33,6 @@ const SeriesCardInfoScreen = ({ route, navigation }) => {
     }
   }, []);
 
-  // console.log(email);
-
   const Restriction = styled.View`
     width: 40;
     height: 40;
@@ -62,8 +58,6 @@ const SeriesCardInfoScreen = ({ route, navigation }) => {
       <></>
     )};
   `;
-
-  // console.log(token);
 
   return (
     <View style={{ flex: 1, backgroundColor: '#0F1218' }}>

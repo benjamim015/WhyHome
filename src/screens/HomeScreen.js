@@ -78,7 +78,7 @@ const HomeScreen = ({ route, navigation }) => {
               email={email}
               myList={myList}
               token={token}
-              title="receitas"></HomeCard>
+              title="livros"></HomeCard>
           </StyledScrollView2>
         </StyledView2>
       </View>

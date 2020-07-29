@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Dimensions } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
 import styled from 'styled-components';
 import Header from '../components/Header';
 import Card from '../components/MoviesCard';
+import addToListIcon from '../assets/plus.png';
+import checkIcon from '../assets/check.png';
+
+const { url } = require('../config/url');
 
 const larguraDaTela = Dimensions.get('window').width;
 const alturaDaTela = Dimensions.get('window').height;
@@ -18,6 +21,17 @@ const MoviesCardInfoScreen = ({ route, navigation }) => {
   const { synopsis } = route.params;
   const { restriction } = route.params;
   const { rating } = route.params;
+  const { myList } = route.params;
+  const { token } = route.params;
+  const { email } = route.params;
+
+  const [isInMyList, setIsInMyList] = useState(false);
+
+  useEffect(() => {
+    if (myList.includes(title)) {
+      setIsInMyList(true);
+    }
+  }, []);
 
   const Restriction = styled.View`
     width: 40;
@@ -61,6 +75,64 @@ const MoviesCardInfoScreen = ({ route, navigation }) => {
             </Restriction>
           </InfoView>
         </OverlayCard2>
+        <AddToListButton
+          onPress={async () => {
+            setIsInMyList(!isInMyList);
+            if (isInMyList == false) {
+              await fetch(`${url}/users/addToMyList`, {
+                method: 'POST',
+                headers: {
+                  'content-type': 'application/json',
+                  Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                  email: email,
+                  type: 'movie',
+                  nome: title,
+                  generos: genres,
+                  ano: year,
+                  imdbRating: rating,
+                  restricao: restriction,
+                  sinopse: synopsis,
+                  imagem: image,
+                }),
+              })
+                .then((response) => {
+                  return response.json();
+                })
+                .then((res) => {
+                  if (res.response === null) {
+                    console.log('ERRO');
+                  } else {
+                    console.log('ITEM ADICIONADO COM SUCESSO');
+                  }
+                });
+            } else {
+              await fetch(`${url}/users/removeFromMyList`, {
+                method: 'POST',
+                headers: {
+                  'content-type': 'application/json',
+                  Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                  email: email,
+                  nome: title,
+                }),
+              })
+                .then((response) => {
+                  return response.json();
+                })
+                .then((res) => {
+                  if (res.response === null) {
+                    console.log('ERRO');
+                  } else {
+                    console.log('ITEM REMOVIDO COM SUCESSO');
+                  }
+                });
+            }
+          }}>
+          <AddToListImage source={isInMyList ? checkIcon : addToListIcon} />
+        </AddToListButton>
       </OverlayCard>
     </View>
   );
@@ -134,4 +206,16 @@ const RestrictionText = styled.Text`
   font-weight: bold;
   font-size: 20;
   font-family: 'Kanit-Regular';
+`;
+
+const AddToListButton = styled.TouchableOpacity`
+  background-color: rgba(0, 0, 0, 1);
+  position: absolute;
+  bottom: 80;
+  border-radius: 100;
+`;
+
+const AddToListImage = styled.Image`
+  width: 50;
+  height: 50;
 `;

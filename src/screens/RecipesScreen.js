@@ -10,7 +10,7 @@ const alturaDaTela = Dimensions.get('window').height;
 const RecipesScreen = () => {
   return (
     <View style={{ flex: 1, backgroundColor: '#0F1218' }}>
-      <Header title="receitas"></Header>
+      <Header title="livros"></Header>
       <StyledScrollView
         contentContainerStyle={{
           alignItems: 'center',
