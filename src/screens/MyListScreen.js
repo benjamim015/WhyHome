@@ -24,25 +24,23 @@ const MoviesScreen = ({ route, navigation }) => {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch(
-        'https://rest-api-whyhome.herokuapp.com/users/getMyList',
-        {
-          method: 'POST',
-          headers: {
-            'content-type': 'application/json',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            email: email,
-          }),
+      const res = await fetch(`${url}/users/getMyList`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          Authorization: `Bearer ${token}`,
         },
-      );
+        body: JSON.stringify({
+          email: email,
+        }),
+      });
 
       const data = await res.json();
 
       setUserList(data.userList);
     })();
   }, [isFocused]);
+
   return (
     <View style={{ flex: 1, backgroundColor: '#0F1218' }}>
       <Header title="filmes"></Header>

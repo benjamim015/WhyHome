@@ -7,7 +7,8 @@ import { useNavigation } from '@react-navigation/native';
 const larguraDaTela = Dimensions.get('window').width;
 const alturaDaTela = Dimensions.get('window').height;
 
-const HomeCard = ({ title }) => {
+const HomeCard = ({ myList, token, email, title }) => {
+  // console.log('myList', myList);
   const TouchableCard = styled.TouchableOpacity`
     height: ${alturaDaTela * 0.7};
     width: ${larguraDaTela * 0.8};
@@ -31,7 +32,7 @@ const HomeCard = ({ title }) => {
 
   const gotoScreen = () => {
     if (title == 'séries') {
-      navigate('SeriesScreen');
+      navigate('SeriesScreen', { myList, token, email });
     } else if (title == 'filmes') {
       navigate('MoviesScreen');
     } else if (title == 'receitas') {

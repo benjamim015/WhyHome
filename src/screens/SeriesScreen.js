@@ -13,8 +13,14 @@ const { url } = require('../config/url');
 const larguraDaTela = Dimensions.get('window').width;
 const alturaDaTela = Dimensions.get('window').height;
 
-const SeriesScreen = ({ navigation }) => {
+const SeriesScreen = ({ route, navigation }) => {
   const [series, setSeries] = useState([]);
+
+  const { myList } = route.params;
+  const { token } = route.params;
+  const { email } = route.params;
+
+  console.log('email:', email);
 
   useEffect(() => {
     (async () => {
@@ -26,7 +32,7 @@ const SeriesScreen = ({ navigation }) => {
       setSeries(data.series.series);
     })();
   }, []);
-
+  // console.log(myList);
   return (
     <View style={{ flex: 1, backgroundColor: '#0F1218' }}>
       <Header title="séries"></Header>
@@ -45,6 +51,9 @@ const SeriesScreen = ({ navigation }) => {
               cardSynopsis={res.sinopse}
               cardRestriction={res.restricao}
               cardRating={res.imdbRating}
+              myList={myList}
+              token={token}
+              email={email}
             />
           );
         })}

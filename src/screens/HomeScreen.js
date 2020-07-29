@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Dimensions } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { useIsFocused } from '@react-navigation/native';
 
 import styled from 'styled-components';
 
@@ -9,6 +10,8 @@ import CustomDrawer from '../components/CustomDrawer';
 import MyListScreen from './MyListScreen';
 import AccountScreen from './AccountScreen';
 import AboutScreen from './AboutScreen';
+
+const { url } = require('../config/url');
 
 const larguraDaTela = Dimensions.get('window').width;
 const alturaDaTela = Dimensions.get('window').height;
@@ -19,6 +22,31 @@ const HomeScreen = ({ route, navigation }) => {
   const { email } = route.params;
   const { name } = route.params;
   const { token } = route.params;
+
+  const isFocused = useIsFocused();
+
+  const [myList, setMyList] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const res = await fetch(`${url}/users/getMyList`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          email: email,
+        }),
+      });
+
+      const data = await res.json();
+
+      setMyList(data.userList.map((res) => res.nome));
+    })();
+  }, [isFocused]);
+
+  console.log('myList', myList);
 
   const ThisScreen = () => {
     return (
@@ -31,10 +59,26 @@ const HomeScreen = ({ route, navigation }) => {
           <StyledScrollView2
             horizontal={true}
             showsHorizontalScrollIndicator={false}>
-            <HomeCard title="séries"></HomeCard>
-            <HomeCard title="filmes"></HomeCard>
-            <HomeCard title="músicas"></HomeCard>
-            <HomeCard title="receitas"></HomeCard>
+            <HomeCard
+              email={email}
+              myList={myList}
+              token={token}
+              title="séries"></HomeCard>
+            <HomeCard
+              email={email}
+              myList={myList}
+              token={token}
+              title="filmes"></HomeCard>
+            <HomeCard
+              email={email}
+              myList={myList}
+              token={token}
+              title="músicas"></HomeCard>
+            <HomeCard
+              email={email}
+              myList={myList}
+              token={token}
+              title="receitas"></HomeCard>
           </StyledScrollView2>
         </StyledView2>
       </View>
@@ -48,7 +92,13 @@ const HomeScreen = ({ route, navigation }) => {
       }}
       drawerStyle={{ width: '60%' }}
       drawerContent={(props) => (
-        <CustomDrawer email={email} name={name} token={token} {...props} />
+        <CustomDrawer
+          email={email}
+          name={name}
+          token={token}
+          myList={myList}
+          {...props}
+        />
       )}>
       <Drawer.Screen name="WhyHome" component={ThisScreen} />
       <Drawer.Screen name="MyListScreen" component={MyListScreen} />

@@ -15,8 +15,13 @@ const Card = ({
   cardSynopsis,
   cardRestriction,
   cardRating,
+  myList,
+  token,
+  email,
 }) => {
   const { navigate } = useNavigation();
+
+  console.log('email:', email);
 
   const gotoInfoScreen = () => {
     navigate('SeriesCardInfoScreen', {
@@ -27,6 +32,9 @@ const Card = ({
       synopsis: cardSynopsis,
       restriction: cardRestriction,
       rating: cardRating,
+      myList: myList,
+      token: token,
+      email: email,
     });
   };
 
