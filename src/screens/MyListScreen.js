@@ -5,6 +5,7 @@ import { useIsFocused } from '@react-navigation/native';
 import styled from 'styled-components';
 import Header from '../components/Header';
 import MoviesCard from '../components/MoviesCard';
+import MusicsCard from '../components/MusicsCard';
 
 const { url } = require('../config/url');
 
@@ -52,7 +53,7 @@ const MoviesScreen = ({ route, navigation }) => {
           justifyContent: 'center',
         }}>
         {userList.map((res) => {
-          return (
+          return res.tipo == 'movie' || res.tipo == 'serie' ? (
             <MoviesCard
               cardTitle={res.nome}
               cardImage={res.imagem}
@@ -61,6 +62,17 @@ const MoviesScreen = ({ route, navigation }) => {
               cardSynopsis={res.sinopse}
               cardRestriction={res.restricao}
               cardRating={res.imdbRating}
+              myList={res.nome}
+              token={token}
+              email={email}
+            />
+          ) : (
+            <MusicsCard
+              cardName={res.nome}
+              cardImage={res.imagem}
+              cardYear={res.ano}
+              cardArtists={res.artista}
+              cardGenres={res.genero}
               myList={res.nome}
               token={token}
               email={email}
