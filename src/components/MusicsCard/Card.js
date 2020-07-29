@@ -7,8 +7,19 @@ import { useNavigation } from '@react-navigation/native';
 const larguraDaTela = Dimensions.get('window').width;
 const alturaDaTela = Dimensions.get('window').height;
 
-const Card = ({ cardName, cardGenres, cardYear, cardArtists, cardImage }) => {
+const Card = ({
+  cardName,
+  cardGenres,
+  cardYear,
+  cardArtists,
+  cardImage,
+  myList,
+  token,
+  email,
+}) => {
   const { navigate } = useNavigation();
+
+  // console.log(token);
 
   const gotoInfoScreen = () => {
     navigate('MusicsCardInfoScreen', {
@@ -17,6 +28,9 @@ const Card = ({ cardName, cardGenres, cardYear, cardArtists, cardImage }) => {
       year: cardYear,
       artists: cardArtists,
       image: cardImage,
+      myList: myList,
+      token: token,
+      email: email,
     });
   };
 

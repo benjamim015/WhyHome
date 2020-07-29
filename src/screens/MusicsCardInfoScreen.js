@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Dimensions } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
 import styled from 'styled-components';
 import Header from '../components/Header';
 import Card from '../components/MusicsCard';
+import addToListIcon from '../assets/plus.png';
+import checkIcon from '../assets/check.png';
+
+const { url } = require('../config/url');
 
 const larguraDaTela = Dimensions.get('window').width;
 const alturaDaTela = Dimensions.get('window').height;
@@ -16,6 +19,19 @@ const MusicsCardInfoScreen = ({ route, navigation }) => {
   const { year } = route.params;
   const { artists } = route.params;
   const { image } = route.params;
+  const { myList } = route.params;
+  const { token } = route.params;
+  const { email } = route.params;
+
+  // console.log('ASDASDASDASD', route.params);
+
+  const [isInMyList, setIsInMyList] = useState(false);
+
+  useEffect(() => {
+    if (myList.includes(name)) {
+      setIsInMyList(true);
+    }
+  }, []);
 
   return (
     <View style={{ flex: 1, backgroundColor: '#0F1218' }}>
@@ -29,10 +45,68 @@ const MusicsCardInfoScreen = ({ route, navigation }) => {
             <InfoText>Artista(s): {artists}</InfoText>
           </InfoView>
         </OverlayCard2>
+        <AddToListButton
+          onPress={async () => {
+            setIsInMyList(!isInMyList);
+            if (isInMyList == false) {
+              await fetch(`${url}/users/addToMyList`, {
+                method: 'POST',
+                headers: {
+                  'content-type': 'application/json',
+                  Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                  email: email,
+                  type: 'music',
+                  nome: name,
+                  genero: genres,
+                  ano: year,
+                  artista: artists,
+                  imagem: image,
+                }),
+              })
+                .then((response) => {
+                  return response.json();
+                })
+                .then((res) => {
+                  if (res.response === null) {
+                    console.log('ERRO');
+                  } else {
+                    console.log('ITEM ADICIONADO COM SUCESSO');
+                  }
+                });
+            } else {
+              await fetch(`${url}/users/removeFromMyList`, {
+                method: 'POST',
+                headers: {
+                  'content-type': 'application/json',
+                  Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                  email: email,
+                  nome: name,
+                }),
+              })
+                .then((response) => {
+                  return response.json();
+                })
+                .then((res) => {
+                  if (res.response === null) {
+                    console.log('ERRO');
+                  } else {
+                    console.log('ITEM REMOVIDO COM SUCESSO');
+                  }
+                });
+            }
+          }}>
+          <AddToListImage source={isInMyList ? checkIcon : addToListIcon} />
+        </AddToListButton>
       </OverlayCard>
     </View>
   );
 };
+
+export default MusicsCardInfoScreen;
 
 const BackgroundImage = styled.Image`
   width: 100%;
@@ -85,4 +159,14 @@ const InfoText = styled.Text`
   font-family: 'Kanit-Regular';
 `;
 
-export default MusicsCardInfoScreen;
+const AddToListButton = styled.TouchableOpacity`
+  background-color: rgba(0, 0, 0, 1);
+  position: absolute;
+  bottom: 80;
+  border-radius: 100;
+`;
+
+const AddToListImage = styled.Image`
+  width: 50;
+  height: 50;
+`;

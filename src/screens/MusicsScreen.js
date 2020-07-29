@@ -10,8 +10,15 @@ const { url } = require('../config/url');
 const larguraDaTela = Dimensions.get('window').width;
 const alturaDaTela = Dimensions.get('window').height;
 
-const MusicsScreen = ({ navigation }) => {
+const MusicsScreen = ({ route, navigation }) => {
   const [musics, setMusics] = useState([]);
+
+  const { myList } = route.params;
+  const { token } = route.params;
+  const { email } = route.params;
+
+  console.log('email:', email, token, myList);
+
   useEffect(() => {
     (async () => {
       const res = await fetch(
@@ -38,6 +45,9 @@ const MusicsScreen = ({ navigation }) => {
               cardYear={res.ano}
               cardArtists={res.artista}
               cardImage={res.imagem}
+              myList={myList}
+              token={token}
+              email={email}
             />
           );
         })}
