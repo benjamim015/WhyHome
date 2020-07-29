@@ -41,6 +41,8 @@ const MoviesScreen = ({ route, navigation }) => {
     })();
   }, [isFocused]);
 
+  console.log(userList);
+
   return (
     <View style={{ flex: 1, backgroundColor: '#0F1218' }}>
       <Header title="Minha Lista"></Header>
@@ -59,6 +61,9 @@ const MoviesScreen = ({ route, navigation }) => {
               cardSynopsis={res.sinopse}
               cardRestriction={res.restricao}
               cardRating={res.imdbRating}
+              myList={res.nome}
+              token={token}
+              email={email}
             />
           );
         })}
