@@ -16,6 +16,7 @@ import MoviesScreen from './src/screens/MoviesScreen';
 import MoviesCardInfoScreen from './src/screens/MoviesCardInfoScreen';
 import RecipesScreen from './src/screens/RecipesScreen';
 import MusicsScreen from './src/screens/MusicsScreen';
+import MusicsCardInfoScreen from './src/screens/MusicsCardInfoScreen';
 import AccountScreen from './src/screens/AccountScreen';
 import AboutScreen from './src/screens/AboutScreen';
 
@@ -85,6 +86,11 @@ const App = () => {
           <Stack.Screen
             name="MoviesCardInfoScreen"
             component={MoviesCardInfoScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="MusicsCardInfoScreen"
+            component={MusicsCardInfoScreen}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
