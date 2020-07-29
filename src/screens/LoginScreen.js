@@ -80,6 +80,7 @@ const LoginScreen = ({ navigation }) => {
                       navigation.navigate('WhyHome', {
                         email: res.data._id,
                         name: res.data.name,
+                        token: res.token,
                       });
                     }
                   });

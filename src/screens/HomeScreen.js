@@ -1,47 +1,60 @@
 import React from 'react';
-import { View, Dimensions } from 'react-native';
+import { View, Text, Dimensions } from 'react-native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import styled from 'styled-components';
 
 import HomeCard from '../components/HomeCard';
+import CustomDrawer from '../components/CustomDrawer';
+import MyListScreen from './MyListScreen';
+import AccountScreen from './AccountScreen';
+import AboutScreen from './AboutScreen';
 
 const larguraDaTela = Dimensions.get('window').width;
 const alturaDaTela = Dimensions.get('window').height;
 
+const Drawer = createDrawerNavigator();
+
 const HomeScreen = ({ route, navigation }) => {
   const { email } = route.params;
   const { name } = route.params;
+  const { token } = route.params;
+
+  const ThisScreen = () => {
+    return (
+      <View style={{ flex: 1, backgroundColor: '#ffffff' }}>
+        <StyledView>
+          <StyledScrollView
+            showsVerticalScrollIndicator={false}></StyledScrollView>
+        </StyledView>
+        <StyledView2>
+          <StyledScrollView2
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}>
+            <HomeCard title="séries"></HomeCard>
+            <HomeCard title="filmes"></HomeCard>
+            <HomeCard title="músicas"></HomeCard>
+            <HomeCard title="receitas"></HomeCard>
+          </StyledScrollView2>
+        </StyledView2>
+      </View>
+    );
+  };
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#ffffff' }}>
-      <StyledView>
-        <StyledScrollView showsVerticalScrollIndicator={false}>
-          <StyledTouchableOpacity
-            onPress={() =>
-              navigation.navigate('AccountScreen', {
-                email: email,
-                name: name,
-              })
-            }>
-            <StyledText>CONTA</StyledText>
-          </StyledTouchableOpacity>
-          <StyledTouchableOpacity
-            onPress={() => navigation.navigate('AboutScreen')}>
-            <StyledText>SOBRE</StyledText>
-          </StyledTouchableOpacity>
-        </StyledScrollView>
-      </StyledView>
-      <StyledView2>
-        <StyledScrollView2
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}>
-          <HomeCard title="séries"></HomeCard>
-          <HomeCard title="filmes"></HomeCard>
-          <HomeCard title="músicas"></HomeCard>
-          <HomeCard title="receitas"></HomeCard>
-        </StyledScrollView2>
-      </StyledView2>
-    </View>
+    <Drawer.Navigator
+      drawerContentOptions={{
+        activeTintColor: 'purple',
+      }}
+      drawerStyle={{ width: '60%' }}
+      drawerContent={(props) => (
+        <CustomDrawer email={email} name={name} token={token} {...props} />
+      )}>
+      <Drawer.Screen name="WhyHome" component={ThisScreen} />
+      <Drawer.Screen name="MyListScreen" component={MyListScreen} />
+      <Drawer.Screen name="AccountScreen" component={AccountScreen} />
+      <Drawer.Screen name="AboutScreen" component={AboutScreen} />
+    </Drawer.Navigator>
   );
 };
 
