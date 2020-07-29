@@ -113,6 +113,28 @@ const SeriesCardInfoScreen = ({ route, navigation }) => {
                     console.log('ITEM ADICIONADO COM SUCESSO');
                   }
                 });
+            } else {
+              await fetch(`${url}/users/removeFromMyList`, {
+                method: 'POST',
+                headers: {
+                  'content-type': 'application/json',
+                  Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                  email: email,
+                  nome: title,
+                }),
+              })
+                .then((response) => {
+                  return response.json();
+                })
+                .then((res) => {
+                  if (res.response === null) {
+                    console.log('ERRO');
+                  } else {
+                    console.log('ITEM REMOVIDO COM SUCESSO');
+                  }
+                });
             }
           }}>
           <AddToListImage source={isInMyList ? checkIcon : addToListIcon} />

@@ -19,7 +19,7 @@ const SeriesScreen = ({ title }) => {
       ? '#025373'
       : title == 'músicas'
       ? '#025E73'
-      : '#ffffff'};
+      : '#000000'};
     width: ${larguraDaTela};
     height: ${alturaDaTela * 0.15};
     border-bottom-left-radius: 30;

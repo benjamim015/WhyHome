@@ -43,7 +43,7 @@ const MoviesScreen = ({ route, navigation }) => {
 
   return (
     <View style={{ flex: 1, backgroundColor: '#0F1218' }}>
-      <Header title="filmes"></Header>
+      <Header title="Minha Lista"></Header>
       <StyledScrollView
         contentContainerStyle={{
           alignItems: 'center',
