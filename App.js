@@ -14,7 +14,8 @@ import SeriesScreen from './src/screens/SeriesScreen';
 import SeriesCardInfoScreen from './src/screens/SeriesCardInfoScreen';
 import MoviesScreen from './src/screens/MoviesScreen';
 import MoviesCardInfoScreen from './src/screens/MoviesCardInfoScreen';
-import RecipesScreen from './src/screens/RecipesScreen';
+import BooksScreen from './src/screens/BooksScreen';
+import BooksCardInfoScreen from './src/screens/BooksCardInfoScreen';
 import MusicsScreen from './src/screens/MusicsScreen';
 import MusicsCardInfoScreen from './src/screens/MusicsCardInfoScreen';
 import AccountScreen from './src/screens/AccountScreen';
@@ -69,8 +70,8 @@ const App = () => {
             options={{ headerShown: false }}
           />
           <Stack.Screen
-            name="RecipesScreen"
-            component={RecipesScreen}
+            name="BooksScreen"
+            component={BooksScreen}
             options={{ headerShown: false }}
           />
           <Stack.Screen
@@ -91,6 +92,11 @@ const App = () => {
           <Stack.Screen
             name="MusicsCardInfoScreen"
             component={MusicsCardInfoScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="BooksCardInfoScreen"
+            component={BooksCardInfoScreen}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

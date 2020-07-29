@@ -36,7 +36,7 @@ const HomeCard = ({ myList, token, email, title }) => {
     } else if (title == 'filmes') {
       navigate('MoviesScreen', { myList, token, email });
     } else if (title == 'livros') {
-      navigate('RecipesScreen', { myList, token, email });
+      navigate('BooksScreen', { myList, token, email });
     } else if (title == 'músicas') {
       navigate('MusicsScreen', { myList, token, email });
     }

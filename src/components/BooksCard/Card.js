@@ -13,8 +13,8 @@ const Card = ({
   cardYear,
   cardGenres,
   cardSynopsis,
-  cardRestriction,
-  cardRating,
+  cardAuthor,
+  cardCopies,
   myList,
   token,
   email,
@@ -22,14 +22,14 @@ const Card = ({
   const { navigate } = useNavigation();
 
   const gotoInfoScreen = () => {
-    navigate('MoviesCardInfoScreen', {
+    navigate('BooksCardInfoScreen', {
       title: cardTitle,
       image: cardImage,
       year: cardYear,
       genres: cardGenres,
       synopsis: cardSynopsis,
-      restriction: cardRestriction,
-      rating: cardRating,
+      author: cardAuthor,
+      copies: cardCopies,
       myList: myList,
       token: token,
       email: email,

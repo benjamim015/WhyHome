@@ -6,13 +6,14 @@ import styled from 'styled-components';
 import Header from '../components/Header';
 import MoviesCard from '../components/MoviesCard';
 import MusicsCard from '../components/MusicsCard';
+import BooksCard from '../components/BooksCard';
 
 const { url } = require('../config/url');
 
 const larguraDaTela = Dimensions.get('window').width;
 const alturaDaTela = Dimensions.get('window').height;
 
-const MoviesScreen = ({ route, navigation }) => {
+const MyListScreen = ({ route, navigation }) => {
   const { token } = route.params;
   const { email } = route.params;
 
@@ -42,7 +43,7 @@ const MoviesScreen = ({ route, navigation }) => {
     })();
   }, [isFocused]);
 
-  console.log(userList);
+  console.log('ASDASDASDASDASDASDASDASDAS', userList[1]);
 
   return (
     <View style={{ flex: 1, backgroundColor: '#0F1218' }}>
@@ -66,13 +67,26 @@ const MoviesScreen = ({ route, navigation }) => {
               token={token}
               email={email}
             />
-          ) : (
+          ) : res.tipo == 'music' ? (
             <MusicsCard
               cardName={res.nome}
               cardImage={res.imagem}
               cardYear={res.ano}
               cardArtists={res.artista}
               cardGenres={res.genero}
+              myList={res.nome}
+              token={token}
+              email={email}
+            />
+          ) : (
+            <BooksCard
+              cardTitle={res.nome}
+              cardImage={res.imagem}
+              cardYear={res.ano}
+              cardGenres={res.genero}
+              cardSynopsis={res.sinopse}
+              cardAuthor={res.autor}
+              cardCopies={res.copias}
               myList={res.nome}
               token={token}
               email={email}
@@ -84,7 +98,7 @@ const MoviesScreen = ({ route, navigation }) => {
   );
 };
 
-export default MoviesScreen;
+export default MyListScreen;
 
 const StyledScrollView = styled.ScrollView`
   width: ${larguraDaTela};

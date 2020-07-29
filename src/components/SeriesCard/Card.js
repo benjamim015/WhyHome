@@ -80,7 +80,9 @@ const OverlayCard = styled.View`
 const TitleText = styled.Text`
   position: absolute;
   color: rgba(255, 255, 255, 0.8);
-  font-size: 40;
+  font-size: 30;
   font-family: Kanit-Regular;
   text-align: center;
+  padding-left: 2%;
+  padding-right: 2%;
 `;
