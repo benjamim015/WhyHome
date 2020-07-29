@@ -28,29 +28,43 @@ const MoviesScreen = ({ route, navigation }) => {
     })();
   }, []);
 
+  const [search, setSearch] = useState('');
+
   return (
-    <View style={{ flex: 1, backgroundColor: '#0F1218' }}>
-      <Header title="filmes"></Header>
+    <View style={{ flex: 1, backgroundColor: '#ffffff' }}>
+      <View style={{ alignItems: 'center' }}>
+        <Header title="filmes"></Header>
+        <SearchBox
+          placeholder={'Pesquisa...'}
+          placeholderTextColor={'#ccc'}
+          onChangeText={(newSearch) => setSearch(newSearch)}
+        />
+      </View>
       <StyledScrollView
         contentContainerStyle={{
           alignItems: 'center',
           justifyContent: 'center',
         }}>
         {movies.map((res) => {
-          return (
-            <MoviesCard
-              cardTitle={res.nome}
-              cardImage={res.imagem}
-              cardYear={res.ano}
-              cardGenres={res.generos}
-              cardSynopsis={res.sinopse}
-              cardRestriction={res.restricao}
-              cardRating={res.imdbRating}
-              myList={myList}
-              token={token}
-              email={email}
-            />
-          );
+          if (
+            res.nome.toUpperCase().includes(search.toUpperCase()) ||
+            res.ano.toUpperCase().includes(search.toUpperCase())
+          ) {
+            return (
+              <MoviesCard
+                cardTitle={res.nome}
+                cardImage={res.imagem}
+                cardYear={res.ano}
+                cardGenres={res.generos}
+                cardSynopsis={res.sinopse}
+                cardRestriction={res.restricao}
+                cardRating={res.imdbRating}
+                myList={myList}
+                token={token}
+                email={email}
+              />
+            );
+          }
         })}
       </StyledScrollView>
     </View>
@@ -62,13 +76,17 @@ export default MoviesScreen;
 const StyledScrollView = styled.ScrollView`
   width: ${larguraDaTela};
   height: ${alturaDaTela * 0.01};
-  background-color: #0f1218;
+  background-color: #ffffff;
 `;
 
-const MovieCard = styled.TouchableOpacity`
-  background-color: #025373;
-  width: ${larguraDaTela * 0.9};
-  height: ${alturaDaTela * 0.15};
-  margin-top: 20;
-  border-radius: 25;
+const SearchBox = styled.TextInput`
+  background-color: transparent;
+  width: ${larguraDaTela * 0.6};
+  height: ${alturaDaTela * 0.05};
+  border-radius: 20;
+  margin-top: 10;
+  margin-bottom: 10;
+  padding-left: 10;
+  font-size: 16;
+  border-width: 1;
 `;
