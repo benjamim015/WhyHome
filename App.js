@@ -27,7 +27,7 @@ const App = () => {
   return (
     <>
       <NavigationContainer>
-        <StatusBar barStyle="dark-content" />
+        <StatusBar barStyle="dark-content" backgroundColor="white" />
         <Stack.Navigator>
           <Stack.Screen
             name="Welcome"

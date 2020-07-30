@@ -13,14 +13,24 @@ const AccountScreen = ({ route, navigation }) => {
   const { name } = route.params;
 
   return (
-    <RedBG style={{ height: '32%', width: '100%' }}>
+    <RedBG style={{ height: '40%', width: '100%' }}>
       <ArrowButton onPress={() => navigation.navigate('WhyHome')}>
         <Image3 source={arrowimg}></Image3>
       </ArrowButton>
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <PeopleImg source={peopleimg}></PeopleImg>
-        <Text1>USER: {name}</Text1>
-        <Text2>EMAIL: {email}</Text2>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+          justifyContent: 'center',
+          // backgroundColor: 'pink',
+          // // flexDirection: 'row',
+        }}>
+        <PeopleImg source={peopleimg} />
+        <View>
+          <StyledText>Nome: Benjamim{name}</StyledText>
+          <StyledText>Email: benjamimq015@gmail.com{email}</StyledText>
+        </View>
         <LeaveButton
           onPress={() => {
             (async () => {
@@ -31,51 +41,55 @@ const AccountScreen = ({ route, navigation }) => {
                 navigation.navigate('Login', { fromAccoutScreen: true });
               } catch (e) {}
             })();
-          }}></LeaveButton>
+          }}>
+          <LeaveText>Sair da Conta</LeaveText>
+        </LeaveButton>
       </View>
     </RedBG>
   );
 };
 
 const RedBG = styled.View`
-  background-color: rgba(242, 7, 50, 0.9);
+  background-color: rgba(242, 7, 50, 0.8);
+  border-bottom-left-radius: 30;
+  border-bottom-right-radius: 30;
 `;
 
 const PeopleImg = styled.Image`
-  width: ${screenWidth * 0.22};
-  height: ${screenHeight * 0.13};
-  margin-top: -100;
-  margin-left: -210;
+  width: ${screenWidth * 0.35};
+  height: ${screenHeight * 0.15};
+  align-self: center;
+  margin-bottom: 10;
 `;
 
-const Text1 = styled.Text`
-  margin-top: -60;
-  margin-left: 70;
-  font-size: 13;
+const StyledText = styled.Text`
+  font-size: 18;
   font-family: Kanit-Regular;
   color: #ffffff;
-`;
-
-const Text2 = styled.Text`
-  margin-top: -45;
-  margin-left: 75;
-  font-size: 13;
-  font-family: Kanit-Regular;
-  color: #ffffff;
+  /* margin-right: 70; */
 `;
 
 const Image3 = styled.Image`
-  margin-top: 10;
-  width: ${screenWidth * 0.2};
-  height: ${screenHeight * 0.07};
+  width: 60;
+  height: 60;
 `;
 
 const ArrowButton = styled.TouchableOpacity``;
 
 const LeaveButton = styled.TouchableOpacity`
-  background-color: black;
-  width: 100;
-  height: 100;
+  /* background-color: black; */
+  height: 30;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15;
+`;
+
+const LeaveText = styled.Text`
+  font-size: 18;
+  font-family: Kanit-Regular;
+  color: #ffffff;
+  border-bottom-width: 1;
+  border-color: #ffffff;
 `;
 
 export default AccountScreen;

@@ -133,7 +133,7 @@ const LoginScreen = ({ route, navigation }) => {
     return (
       <View
         style={{
-          // backgroundColor: 'black',
+          backgroundColor: '#ffffff',
           width: '100%',
           height: '100%',
           justifyContent: 'center',
