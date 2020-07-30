@@ -8,6 +8,7 @@ import {
   Image,
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+import { useIsFocused } from '@react-navigation/native';
 
 import styled from 'styled-components';
 import LSBackground from '../assets/loginscreen.png';
@@ -19,9 +20,18 @@ const { url } = require('../config/url');
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = ({ route, navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const isFocused = useIsFocused();
+
+  useEffect(() => {
+    console.log('NAVIGATION', navigation);
+    console.log('ROUTE', route);
+    console.log(email);
+    console.log(password);
+  }, [isFocused]);
 
   // const [keep, setKeep] = useState(false);
 
@@ -94,7 +104,7 @@ const LoginScreen = ({ navigation }) => {
 
   const [loading, setLoading] = useState(false);
 
-  if (keepLoggedAsync) {
+  if (keepLoggedAsync && route.params == null) {
     console.log(keepedEmail);
     console.log(keepedPassword);
     (async () => {
@@ -119,7 +129,7 @@ const LoginScreen = ({ navigation }) => {
     })();
   }
 
-  if (keepLoggedAsync) {
+  if (keepLoggedAsync && route.params == null) {
     return (
       <View
         style={{
@@ -129,7 +139,7 @@ const LoginScreen = ({ navigation }) => {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <Image source={Logo} style={{ width: '80%', height: '15%' }} />
+        <Image source={Logo} style={{ width: '60%', height: '10%' }} />
       </View>
     );
   }

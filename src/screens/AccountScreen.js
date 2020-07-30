@@ -26,9 +26,11 @@ const AccountScreen = ({ route, navigation }) => {
             (async () => {
               try {
                 await AsyncStorage.setItem('@storage_KeepLogged', 'false');
+                await AsyncStorage.setItem('@storage_KeepedEmail', '');
+                await AsyncStorage.setItem('@storage_KeepedPassword', '');
+                navigation.navigate('Login', { fromAccoutScreen: true });
               } catch (e) {}
             })();
-            navigation.navigate('Login');
           }}></LeaveButton>
       </View>
     </RedBG>
