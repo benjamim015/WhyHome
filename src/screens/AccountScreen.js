@@ -3,6 +3,7 @@ import { View, Dimensions } from 'react-native';
 import styled from 'styled-components';
 import peopleimg from '../assets/peopleimg.png';
 import arrowimg from '../assets/whiteArrow.png';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
@@ -20,6 +21,15 @@ const AccountScreen = ({ route, navigation }) => {
         <PeopleImg source={peopleimg}></PeopleImg>
         <Text1>USER: {name}</Text1>
         <Text2>EMAIL: {email}</Text2>
+        <LeaveButton
+          onPress={() => {
+            (async () => {
+              try {
+                await AsyncStorage.setItem('@storage_KeepLogged', 'false');
+              } catch (e) {}
+            })();
+            navigation.navigate('Login');
+          }}></LeaveButton>
       </View>
     </RedBG>
   );
@@ -59,5 +69,11 @@ const Image3 = styled.Image`
 `;
 
 const ArrowButton = styled.TouchableOpacity``;
+
+const LeaveButton = styled.TouchableOpacity`
+  background-color: black;
+  width: 100;
+  height: 100;
+`;
 
 export default AccountScreen;

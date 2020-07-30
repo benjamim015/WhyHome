@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
-import { View, Dimensions, ImageBackground, Alert } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import {
+  View,
+  Dimensions,
+  ImageBackground,
+  Alert,
+  CheckBox,
+  Image,
+} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import styled from 'styled-components';
 import LSBackground from '../assets/loginscreen.png';
 import LSPeople from '../assets/loginscreenpeople.png';
+import Logo from '../assets/logo.png';
 
 const { url } = require('../config/url');
 
@@ -11,10 +20,119 @@ const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 const LoginScreen = ({ navigation }) => {
-  const [email, setEmail] = useState('a');
-  const [password, setPassword] = useState('a');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  // const [keep, setKeep] = useState(false);
+
+  const storeData = async (value) => {
+    try {
+      const jsonValue = JSON.stringify(value);
+      console.log('GUARDADO COM SUCESSO', jsonValue);
+      await AsyncStorage.setItem('@storage_KeepLogged', jsonValue);
+      await AsyncStorage.setItem('@storage_KeepedEmail', email);
+      await AsyncStorage.setItem('@storage_KeepedPassword', password);
+    } catch (e) {}
+  };
+
+  const getData = async () => {
+    try {
+      const keepLogged2 = await AsyncStorage.getItem('@storage_KeepLogged');
+      const keepedEmail2 = await AsyncStorage.getItem('@storage_KeepedEmail');
+      const keepedPassword2 = await AsyncStorage.getItem(
+        '@storage_KeepedPassword',
+      );
+      return {
+        keepLogged: keepLogged2 == 'true' ? true : false,
+        keepedEmail: keepedEmail2,
+        keepedPassword: keepedPassword2,
+      };
+    } catch (e) {}
+  };
+
+  // useEffect(() => {
+  //   (async () => {
+  //     const res = await getData();
+  //     setKeep(res);
+  //   })();
+  // }, []);
+
+  // useEffect(() => {
+  //   setKeepLogged(keep);
+  // }, [keep]);
+
+  // const [keepLogged, setKeepLogged] = useState(keep);
+  const [keepLogged, setKeepLogged] = useState(false);
+
+  const [keepLoggedAsync, setKeepLoggedAsync] = useState('');
+  const [keepedEmail, setKeepedEmail] = useState('');
+  const [keepedPassword, setKeepedPassword] = useState('');
+
+  useEffect(() => {
+    (async () => {
+      const res = await getData();
+      console.log('res123', res);
+      setKeepLoggedAsync(res.keepLogged);
+      setKeepedEmail(res.keepedEmail);
+      setKeepedPassword(res.keepedPassword);
+      return res;
+    })();
+  }, []);
+
+  //   useEffect(() => {
+  //     (async () => {
+  //       const res = await getData();
+  //       console.log('res', res);
+  //       return res;
+  //     })();
+  //   }, []),
+  // );
+
+  // console.log('KEEP', keepLogged);
 
   let errors = '';
+
+  const [loading, setLoading] = useState(false);
+
+  if (keepLoggedAsync) {
+    console.log(keepedEmail);
+    console.log(keepedPassword);
+    (async () => {
+      await fetch(`${url}/users/login`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: keepedEmail,
+          password: keepedPassword,
+        }),
+      })
+        .then((response) => response.json())
+        .then((res) => {
+          navigation.navigate('WhyHome', {
+            email: res.data._id,
+            name: res.data.name,
+            token: res.token,
+          });
+        });
+    })();
+  }
+
+  if (keepLoggedAsync) {
+    return (
+      <View
+        style={{
+          // backgroundColor: 'black',
+          width: '100%',
+          height: '100%',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <Image source={Logo} style={{ width: '80%', height: '15%' }} />
+      </View>
+    );
+  }
 
   return (
     <ImageBackground
@@ -49,12 +167,7 @@ const LoginScreen = ({ navigation }) => {
               if (password === '') errors += 'Preencha o campo de senha! \n';
 
               if (errors !== '') {
-                Alert.alert('Erro!', errors, [
-                  {
-                    text: 'OK',
-                    style: 'Cancel',
-                  },
-                ]);
+                Alert.alert('Erro!', errors);
                 errors = '';
               } else {
                 await fetch(`${url}/users/login`, {
@@ -70,29 +183,33 @@ const LoginScreen = ({ navigation }) => {
                   .then((response) => response.json())
                   .then((res) => {
                     if (res.response === null) {
-                      Alert.alert('Erro!', 'Falha na autenticação', [
-                        {
-                          text: 'OK',
-                          style: 'cancel',
-                        },
-                      ]);
+                      Alert.alert('Erro!', 'Falha na autenticação');
                     } else {
                       navigation.navigate('WhyHome', {
                         email: res.data._id,
                         name: res.data.name,
                         token: res.token,
                       });
+                      if (keepLogged) {
+                        storeData(keepLogged);
+                      }
                     }
                   });
               }
             }}>
             <String>Login</String>
           </LoginButton>
+          <KeepLoggedView>
+            <CheckBox value={keepLogged} onValueChange={setKeepLogged} />
+            <KeepLoggedText>Manter conectado?</KeepLoggedText>
+          </KeepLoggedView>
         </Container>
       </View>
     </ImageBackground>
   );
 };
+
+export default LoginScreen;
 
 const PeopleImg = styled.Image`
   width: 150;
@@ -139,4 +256,14 @@ const String = styled.Text`
   font-family: Kanit-Regular;
 `;
 
-export default LoginScreen;
+const KeepLoggedView = styled.TouchableOpacity`
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10;
+`;
+
+const KeepLoggedText = styled.Text`
+  font-size: 20;
+  font-family: Kanit-Regular;
+`;
