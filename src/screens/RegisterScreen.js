@@ -129,7 +129,6 @@ const RegisterScreen = ({ navigation }) => {
 };
 
 const ArrowButton = styled.TouchableOpacity`
-  /* background-color: #ff00ff; */
   width: 50;
   height: 50;
   position: absolute;

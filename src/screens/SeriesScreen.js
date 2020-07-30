@@ -34,7 +34,7 @@ const SeriesScreen = ({ route, navigation }) => {
   }, []);
   // console.log(myList);
   return (
-    <View style={{ flex: 1, backgroundColor: '#0F1218' }}>
+    <View style={{ flex: 1, backgroundColor: '#ffffff' }}>
       <Header title="séries"></Header>
       <StyledScrollView
         contentContainerStyle={{
@@ -67,11 +67,11 @@ export default SeriesScreen;
 const StyledScrollView = styled.ScrollView`
   width: ${larguraDaTela};
   height: ${alturaDaTela * 0.01};
-  background-color: #0f1218;
+  background-color: #ffffff;
 `;
 
 const SerieCard = styled.TouchableOpacity`
-  background-color: #025373;
+  background-color: #ffffff;
   width: ${larguraDaTela * 0.9};
   height: ${alturaDaTela * 0.15};
   margin-top: 20;

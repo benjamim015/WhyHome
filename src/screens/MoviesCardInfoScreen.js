@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import Card from '../components/MoviesCard';
 import addToListIcon from '../assets/plus.png';
 import checkIcon from '../assets/check.png';
+import ArrowImage from '../assets/whiteArrow.png';
 
 const { url } = require('../config/url');
 
@@ -63,6 +64,9 @@ const MoviesCardInfoScreen = ({ route, navigation }) => {
     <View style={{ flex: 1, backgroundColor: '#0F1218' }}>
       <BackgroundImage source={{ uri: image }}></BackgroundImage>
       <OverlayCard>
+        <ArrowB onPress={() => navigation.goBack()}>
+          <ArrowImg source={ArrowImage}></ArrowImg>
+        </ArrowB>
         <OverlayCard2>
           <Title>{title}</Title>
           <Synopsis>{synopsis}</Synopsis>
@@ -218,4 +222,18 @@ const AddToListButton = styled.TouchableOpacity`
 const AddToListImage = styled.Image`
   width: 50;
   height: 50;
+`;
+
+const ArrowB = styled.TouchableOpacity`
+  top: -330;
+  left: -160;
+  width: 62;
+  height: 51;
+`;
+
+const ArrowImg = styled.Image`
+  height: 100;
+  width: 100;
+  top: -23;
+  left: -20;
 `;

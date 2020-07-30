@@ -30,7 +30,7 @@ const MusicsScreen = ({ route, navigation }) => {
     })();
   }, []);
   return (
-    <View style={{ flex: 1, backgroundColor: '#0F1218' }}>
+    <View style={{ flex: 1, backgroundColor: 'ffffff' }}>
       <Header title="músicas"></Header>
       <StyledScrollView
         contentContainerStyle={{
@@ -61,5 +61,5 @@ export default MusicsScreen;
 const StyledScrollView = styled.ScrollView`
   width: ${larguraDaTela};
   height: ${alturaDaTela * 0.01};
-  background-color: #0f1218;
+  background-color: #ffffff;
 `;

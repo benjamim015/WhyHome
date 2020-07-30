@@ -46,7 +46,7 @@ const MyListScreen = ({ route, navigation }) => {
   console.log('ASDASDASDASDASDASDASDASDAS', userList[1]);
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#0F1218' }}>
+    <View style={{ flex: 1, backgroundColor: '#ffffff' }}>
       <Header title="Minha Lista"></Header>
       <StyledScrollView
         contentContainerStyle={{
@@ -103,7 +103,7 @@ export default MyListScreen;
 const StyledScrollView = styled.ScrollView`
   width: ${larguraDaTela};
   height: ${alturaDaTela * 0.01};
-  background-color: #0f1218;
+  background-color: #ffffff;
 `;
 
 const MovieCard = styled.TouchableOpacity`

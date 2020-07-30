@@ -33,7 +33,7 @@ const BooksScreen = ({ route, navigation }) => {
   console.log('BOOKS', books);
 
   return (
-    <View style={{ flex: 1, backgroundColor: '#0F1218' }}>
+    <View style={{ flex: 1, backgroundColor: '#ffffff' }}>
       <Header title="livros"></Header>
       <StyledScrollView
         contentContainerStyle={{
@@ -66,5 +66,5 @@ export default BooksScreen;
 const StyledScrollView = styled.ScrollView`
   width: ${larguraDaTela};
   height: ${alturaDaTela * 0.01};
-  background-color: #0f1218;
+  background-color: #ffffff;
 `;
