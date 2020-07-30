@@ -72,27 +72,16 @@ const RegisterScreen = ({ navigation }) => {
                 errors += 'Preencha o campo de confirmar senha \n';
 
               if (errors !== '') {
-                Alert.alert('Erro!', errors, [
-                  {
-                    text: 'OK',
-                    style: 'Cancel',
-                  },
-                ]);
+                Alert.alert('Erro!', errors);
                 errors = '';
               } else {
                 if (password !== confirmPassword) {
                   Alert.alert(
                     'Erro!',
                     'Confirmar Senha está diferente de Senha!',
-                    [
-                      {
-                        text: 'OK',
-                        style: 'Cancel',
-                      },
-                    ],
                   );
                 } else {
-                  await fetch(`${url}/users/signUp`, {
+                  await fetch(`${url}/users/emailVerification`, {
                     method: 'POST',
                     headers: {
                       'content-type': 'application/json',
@@ -108,12 +97,7 @@ const RegisterScreen = ({ navigation }) => {
                     .then((res) => {
                       console.log(res.response);
                       if (res.response !== null) {
-                        Alert.alert('Conta criada com sucesso!', '', [
-                          {
-                            text: 'OK',
-                            style: 'cancel',
-                          },
-                        ]);
+                        Alert.alert('Verifique seu e-mail', '');
                         navigation.navigate('Login');
                       }
                     });

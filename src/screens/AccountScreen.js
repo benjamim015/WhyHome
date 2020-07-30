@@ -28,8 +28,8 @@ const AccountScreen = ({ route, navigation }) => {
         }}>
         <PeopleImg source={peopleimg} />
         <View>
-          <StyledText>Nome: Benjamim{name}</StyledText>
-          <StyledText>Email: benjamimq015@gmail.com{email}</StyledText>
+          <StyledText>Nome: {name}</StyledText>
+          <StyledText>Email: {email}</StyledText>
         </View>
         <LeaveButton
           onPress={() => {
