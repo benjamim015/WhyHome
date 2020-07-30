@@ -3,11 +3,35 @@ import { Text, View, ImageBackground, Image, Dimensions } from 'react-native';
 import WSBackground from '../assets/welcomescreen.png';
 import WSLogo from '../assets/logo.png';
 import styled from 'styled-components';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const screenWidth = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
 const WelcomeScreen = ({ navigation }) => {
+  const storeData = async (value) => {
+    try {
+      const jsonValue = JSON.stringify(value);
+      await AsyncStorage.setItem('@storage_FisrtTime', jsonValue);
+      console.log(jsonValue);
+    } catch (e) {}
+  };
+
+  const getData = async () => {
+    try {
+      const firstTime = await AsyncStorage.getItem('@storage_FisrtTime');
+      return firstTime;
+    } catch (e) {}
+  };
+
+  if (
+    async () => {
+      await getData();
+    }
+  ) {
+    navigation.replace('Login');
+  }
+
   return (
     <ImageBackground
       source={WSBackground}
@@ -19,7 +43,7 @@ const WelcomeScreen = ({ navigation }) => {
             flexDirection: 'row-reverse',
           }}>
           <View style={{ flexDirection: 'column' }}>
-            <Text1>BEM-VINDO</Text1>
+            <Text1>SEJA BEM-VINDO</Text1>
             <Text2>é bom ter você conosco</Text2>
           </View>
         </View>
@@ -30,7 +54,11 @@ const WelcomeScreen = ({ navigation }) => {
             marginTop: 130,
             width: '100%',
           }}>
-          <StartButton onPress={() => navigation.navigate('Login')}>
+          <StartButton
+            onPress={async () => {
+              storeData(true);
+              navigation.navigate('Register');
+            }}>
             <Text3>Começar</Text3>
           </StartButton>
         </View>
@@ -43,12 +71,7 @@ const WelcomeScreen = ({ navigation }) => {
           alignSelf: 'flex-start',
           marginBottom: 10,
           marginLeft: 10,
-        }}>
-        <Text4>Ainda não tem uma conta?</Text4>
-        <RegisterButton onPress={() => navigation.navigate('Register')}>
-          <Text5>Registre-se!</Text5>
-        </RegisterButton>
-      </View>
+        }}></View>
     </ImageBackground>
   );
 };
@@ -56,7 +79,7 @@ const WelcomeScreen = ({ navigation }) => {
 const Text1 = styled.Text`
   font-family: Kanit-Regular;
   color: #000000;
-  font-size: 50;
+  font-size: 45;
   align-self: flex-end;
   margin-right: 20;
 `;
@@ -104,7 +127,8 @@ const StartButton = styled.TouchableOpacity`
   border-radius: 100;
   justify-content: center;
   align-items: center;
-  margin-right: 16;
+  margin-right: 20;
+  margin-top: 30;
 `;
 
 export default WelcomeScreen;

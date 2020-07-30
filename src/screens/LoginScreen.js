@@ -60,18 +60,6 @@ const LoginScreen = ({ route, navigation }) => {
     } catch (e) {}
   };
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const res = await getData();
-  //     setKeep(res);
-  //   })();
-  // }, []);
-
-  // useEffect(() => {
-  //   setKeepLogged(keep);
-  // }, [keep]);
-
-  // const [keepLogged, setKeepLogged] = useState(keep);
   const [keepLogged, setKeepLogged] = useState(false);
 
   const [keepLoggedAsync, setKeepLoggedAsync] = useState('');
@@ -88,17 +76,6 @@ const LoginScreen = ({ route, navigation }) => {
       return res;
     })();
   }, []);
-
-  //   useEffect(() => {
-  //     (async () => {
-  //       const res = await getData();
-  //       console.log('res', res);
-  //       return res;
-  //     })();
-  //   }, []),
-  // );
-
-  // console.log('KEEP', keepLogged);
 
   let errors = '';
 
@@ -157,7 +134,7 @@ const LoginScreen = ({ route, navigation }) => {
         <PeopleImg source={LSPeople}></PeopleImg>
         <Container>
           <StyledTextInput
-            placeholder="Email"
+            placeholder="E-mail"
             placeholderTextColor="#cccccc"
             value={email}
             autoCapitalize="none"
@@ -213,6 +190,18 @@ const LoginScreen = ({ route, navigation }) => {
             <CheckBox value={keepLogged} onValueChange={setKeepLogged} />
             <KeepLoggedText>Manter conectado?</KeepLoggedText>
           </KeepLoggedView>
+          <View
+            style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              flexDirection: 'row',
+              marginTop: 200,
+            }}>
+            <RegisterText1>Ainda não tem uma conta?</RegisterText1>
+            <RegisterButton onPress={() => navigation.navigate('Register')}>
+              <RegisterText2>Registre-se!</RegisterText2>
+            </RegisterButton>
+          </View>
         </Container>
       </View>
     </ImageBackground>
@@ -276,4 +265,21 @@ const KeepLoggedView = styled.TouchableOpacity`
 const KeepLoggedText = styled.Text`
   font-size: 20;
   font-family: Kanit-Regular;
+`;
+
+const RegisterText1 = styled.Text`
+  font-size: 16;
+  color: #ffffff;
+`;
+
+const RegisterText2 = styled.Text`
+  font-size: 18;
+  color: #0d1d26;
+  margin-left: 2;
+  margin-bottom: 1;
+`;
+
+const RegisterButton = styled.TouchableOpacity`
+  justify-content: center;
+  align-items: center;
 `;
