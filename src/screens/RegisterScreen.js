@@ -4,6 +4,7 @@ import { Alert, Dimensions, ImageBackground, Image } from 'react-native';
 import styled from 'styled-components';
 import ResgisterBackgroundImage from '../assets/registerScreen.png';
 import ArrowBackImage from '../assets/arrow.png';
+import Logo from '../assets/logo.png';
 
 const { url } = require('../config/url');
 
@@ -25,6 +26,7 @@ const RegisterScreen = ({ navigation }) => {
         <ArrowButton onPress={() => navigation.goBack()}>
           <ArrowImage source={ArrowBackImage} />
         </ArrowButton>
+        <LogoImage source={Logo}></LogoImage>
         <Container>
           <StyledTextInput
             placeholder="Nome"
@@ -165,7 +167,7 @@ const RegisterButton = styled.TouchableOpacity`
   width: ${larguraDaTela * 0.5};
   height: ${alturaDaTela * 0.065};
   border-radius: 100;
-  margin-top: 20;
+  margin-top: 30;
   align-self: center;
   align-items: center;
   justify-content: center;
@@ -175,6 +177,14 @@ const RegisterText = styled.Text`
   color: #ffffff;
   font-size: 20;
   font-family: Kanit-Regular;
+`;
+
+const LogoImage = styled.Image`
+  position: relative;
+  width: 200;
+  height: 75;
+  top: -50;
+  left: -20;
 `;
 
 export default RegisterScreen;
