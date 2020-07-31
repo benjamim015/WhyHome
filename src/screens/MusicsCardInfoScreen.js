@@ -161,7 +161,7 @@ const OverlayCard2 = styled.View`
 
 const Title = styled.Text`
   color: #ffffff;
-  font-size: 40;
+  font-size: 35;
   font-family: 'Kanit-Regular';
   margin-bottom: 15;
   text-align: center;
@@ -183,7 +183,7 @@ const InfoView = styled.View`
 
 const InfoText = styled.Text`
   color: #ffffff;
-  font-size: 16;
+  font-size: 14;
   font-family: 'Kanit-Regular';
 `;
 
