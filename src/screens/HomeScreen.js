@@ -49,6 +49,9 @@ const HomeScreen = ({ route, navigation }) => {
   const ThisScreen = () => {
     return (
       <View style={{ flex: 1, backgroundColor: '#ffffff' }}>
+        <SwipeView1>
+          <SwipeView2></SwipeView2>
+        </SwipeView1>
         <StyledView>
           <StyledScrollView
             showsVerticalScrollIndicator={false}></StyledScrollView>
@@ -121,24 +124,38 @@ const StyledScrollView = styled.ScrollView`
   margin-top: 35;
 `;
 
-const StyledTouchableOpacity = styled.TouchableOpacity`
-  height: ${alturaDaTela * 0.07};
-  width: ${larguraDaTela * 0.5};
-  justify-content: center;
-  align-items: center;
-`;
-
-const StyledText = styled.Text`
-  color: white;
-  font-family: Kanit-Regular;
-  font-size: 25;
-`;
-
 const StyledView2 = styled.View`
   width: ${larguraDaTela};
-  height: ${alturaDaTela * 0.7};
+  height: ${alturaDaTela * 0.8};
+  top: -50;
 `;
 
 const StyledScrollView2 = styled.ScrollView`
   flex: 1;
+  height: ${alturaDaTela * 1};
+`;
+
+const SwipeView1 = styled.View`
+  width: 10;
+  height: 80;
+  background-color: #06a2cc;
+  position: absolute;
+  border-bottom-right-radius: 100;
+  border-top-right-radius: 100;
+  top: 20;
+  justify-content: center;
+`;
+
+const SwipeView2 = styled.View`
+  width: 0;
+  height: 0;
+  border-top-width: 8;
+  border-top-color: transparent;
+  border-bottom-width: 8;
+  border-bottom-color: transparent;
+  border-left-width: 8;
+  border-left-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  border-bottom-right-radius: 100;
+  border-top-right-radius: 100;
 `;

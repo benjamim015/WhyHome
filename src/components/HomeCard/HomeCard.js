@@ -62,7 +62,7 @@ const HomeCard = ({ myList, token, email, title }) => {
 export default HomeCard;
 
 const TouchableCard = styled.TouchableOpacity`
-  height: ${alturaDaTela * 0.65};
+  height: ${alturaDaTela * 0.8};
   width: ${larguraDaTela * 0.8};
   justify-content: center;
   align-items: center;

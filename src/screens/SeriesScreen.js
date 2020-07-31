@@ -20,9 +20,7 @@ const SeriesScreen = ({ route, navigation }) => {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch(
-        'https://rest-api-whyhome.herokuapp.com/series/getAll',
-      );
+      const res = await fetch(`${url}/series/getAll`);
       const data = await res.json();
 
       setSeries(data.series.series);
@@ -30,6 +28,7 @@ const SeriesScreen = ({ route, navigation }) => {
   }, []);
 
   const [search, setSearch] = useState('');
+
   return (
     <View style={{ flex: 1, backgroundColor: '#ffffff' }}>
       <View style={{ alignItems: 'center' }}>
