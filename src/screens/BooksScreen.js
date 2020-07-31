@@ -92,7 +92,7 @@ const SearchBox = styled.TextInput`
   border-radius: 20;
   margin-top: 10;
   margin-bottom: 10;
-  padding-left: 10;
+  padding-left: 15;
   font-size: 16;
   border-width: 1;
 `;

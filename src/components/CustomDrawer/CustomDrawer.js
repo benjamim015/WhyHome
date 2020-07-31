@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity, Image, Dimensions } from 'react-native';
-import {
-  DrawerContentScrollView,
-  DrawerItemList,
-  DrawerItem,
-} from '@react-navigation/drawer';
+import { View, Dimensions } from 'react-native';
+import { DrawerContentScrollView } from '@react-navigation/drawer';
 
 import styled from 'styled-components';
 
 import PeopleImg from '../../assets/loginscreenpeople.png';
-import backgroundImage from '../../assets/drawerBackgroundImage.png';
 import logoIcon from '../../assets/logo.png';
 import ListIcon from '../../assets/listIcon.png';
 import InfoIcon from '../../assets/infoIcon.png';
@@ -52,24 +47,28 @@ const CustomDrawer = ({ email, name, token, navigation, ...props }) => {
     color: ${whyHomeIsFocused ? '#06a2cc' : '#000000'};
     font-size: 20;
     margin-left: 10;
+    font-family: Kanit-Regular;
   `;
 
   const MyListText = styled.Text`
     color: ${myListFocused ? '#06a2cc' : '#000000'};
     font-size: 20;
     margin-left: 10;
+    font-family: Kanit-Regular;
   `;
 
   const AccoutText = styled.Text`
     color: ${accountIsFocused ? '#06a2cc' : '#000000'};
     font-size: 20;
     margin-left: 10;
+    font-family: Kanit-Regular;
   `;
 
   const AboutText = styled.Text`
     color: ${aboutIsFocused ? '#06a2cc' : '#000000'};
     font-size: 20;
     margin-left: 10;
+    font-family: Kanit-Regular;
   `;
 
   return (
@@ -133,14 +132,12 @@ const CustomDrawer = ({ email, name, token, navigation, ...props }) => {
 export default CustomDrawer;
 
 const StyledView = styled.View`
-  /* background-color: pink; */
   flex: 1;
   justify-content: center;
   align-items: center;
 `;
 
 const BackgroundImage = styled.View`
-  /* background-color: #06a2cc; */
   background-color: rgba(6, 162, 204, 1);
   width: 100%;
   height: 270;
@@ -158,19 +155,15 @@ const StyledImage = styled.Image`
 const UserName = styled.Text`
   color: #000000;
   font-size: 30;
-  /* margin-bottom: 20; */
+  font-family: Kanit-Regular;
 `;
 
 const ScreensContainerView = styled.View`
-  /* background-color: purple; */
   width: 90%;
 `;
 
 const ScreensButton = styled.TouchableOpacity`
-  /* background-color: rgba(6, 183, 219, 0.1); */
-  /* background-color: #06b7db; */
   width: 100%;
-  /* justify-content: center; */
   align-items: center;
   width: 100%;
   height: 40;

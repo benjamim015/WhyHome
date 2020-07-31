@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Dimensions, ImageBackground, Image } from 'react-native';
+import React from 'react';
+import { Dimensions } from 'react-native';
 
 import styled from 'styled-components';
 import { useNavigation } from '@react-navigation/native';

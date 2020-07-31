@@ -64,7 +64,6 @@ const StyledText = styled.Text`
   font-size: 18;
   font-family: Kanit-Regular;
   color: #ffffff;
-  /* margin-right: 70; */
 `;
 
 const ArrowImg = styled.Image`

@@ -50,7 +50,6 @@ const StyledText = styled.Text`
 `;
 
 const ArrowButton = styled.TouchableOpacity`
-  /* background-color: black; */
   height: 50;
   width: 50;
   position: absolute;

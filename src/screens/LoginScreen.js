@@ -255,6 +255,7 @@ const KeepLoggedText = styled.Text`
 const RegisterText1 = styled.Text`
   font-size: 16;
   color: #ffffff;
+  font-family: Kanit-Regular;
 `;
 
 const RegisterText2 = styled.Text`
@@ -262,6 +263,7 @@ const RegisterText2 = styled.Text`
   color: #0d1d26;
   margin-left: 2;
   margin-bottom: 1;
+  font-family: Kanit-Regular;
 `;
 
 const RegisterButton = styled.TouchableOpacity`
