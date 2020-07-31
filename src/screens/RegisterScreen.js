@@ -136,14 +136,12 @@ const BackgroundImage = styled.ImageBackground`
 `;
 
 const StyledView = styled.View`
-  /* background-color: #ff0000; */
   flex: 1;
   align-items: center;
   justify-content: center;
 `;
 
 const Container = styled.View`
-  /* background-color: #ff0000; */
   width: ${larguraDaTela * 0.7};
   height: ${alturaDaTela * 0.5};
 `;

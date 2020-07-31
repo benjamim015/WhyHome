@@ -75,7 +75,6 @@ const ArrowImg = styled.Image`
 const ArrowButton = styled.TouchableOpacity``;
 
 const LeaveButton = styled.TouchableOpacity`
-  /* background-color: black; */
   height: 30;
   justify-content: center;
   align-items: center;

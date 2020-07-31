@@ -170,7 +170,6 @@ const Title = styled.Text`
 `;
 
 const InfoView = styled.View`
-  /* background-color: red; */
   margin-top: 10;
   width: 100%;
   height: 100;
