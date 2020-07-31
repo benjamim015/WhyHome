@@ -47,7 +47,14 @@ const MusicsScreen = ({ route, navigation }) => {
         {musics.map((res) => {
           if (
             res.nome.toUpperCase().includes(search.toUpperCase()) ||
-            res.ano.toUpperCase().includes(search.toUpperCase())
+            res.ano.toUpperCase().includes(search.toUpperCase()) ||
+            res.genero
+              .map((resp) => {
+                if (resp.toUpperCase().includes(search.toUpperCase())) {
+                  return true;
+                }
+              })
+              .indexOf(true) > -1
           ) {
             return (
               <MusicsCard
