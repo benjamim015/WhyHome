@@ -30,31 +30,43 @@ const BooksScreen = ({ route, navigation }) => {
     })();
   }, []);
 
-  console.log('BOOKS', books);
+  const [search, setSearch] = useState('');
 
   return (
     <View style={{ flex: 1, backgroundColor: '#ffffff' }}>
-      <Header title="livros"></Header>
+      <View style={{ alignItems: 'center' }}>
+        <Header title="livros"></Header>
+        <SearchBox
+          placeholder={'Pesquisa...'}
+          placeholderTextColor={'#ccc'}
+          onChangeText={(newSearch) => setSearch(newSearch)}
+        />
+      </View>
       <StyledScrollView
         contentContainerStyle={{
           alignItems: 'center',
           justifyContent: 'center',
         }}>
         {books.map((res) => {
-          return (
-            <BooksCard
-              cardTitle={res.nome}
-              cardImage={res.imagem}
-              cardYear={res.ano}
-              cardGenres={res.genero}
-              cardSynopsis={res.sinopse}
-              cardAuthor={res.autor}
-              cardCopies={res.copias}
-              myList={myList}
-              token={token}
-              email={email}
-            />
-          );
+          if (
+            res.nome.toUpperCase().includes(search.toUpperCase()) ||
+            res.ano.toUpperCase().includes(search.toUpperCase())
+          ) {
+            return (
+              <BooksCard
+                cardTitle={res.nome}
+                cardImage={res.imagem}
+                cardYear={res.ano}
+                cardGenres={res.genero}
+                cardSynopsis={res.sinopse}
+                cardAuthor={res.autor}
+                cardCopies={res.copias}
+                myList={myList}
+                token={token}
+                email={email}
+              />
+            );
+          }
         })}
       </StyledScrollView>
     </View>
@@ -67,4 +79,16 @@ const StyledScrollView = styled.ScrollView`
   width: ${larguraDaTela};
   height: ${alturaDaTela * 0.01};
   background-color: #ffffff;
+`;
+
+const SearchBox = styled.TextInput`
+  background-color: transparent;
+  width: ${larguraDaTela * 0.6};
+  height: ${alturaDaTela * 0.05};
+  border-radius: 20;
+  margin-top: 10;
+  margin-bottom: 10;
+  padding-left: 10;
+  font-size: 16;
+  border-width: 1;
 `;

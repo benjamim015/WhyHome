@@ -11,8 +11,6 @@ import Card from '../components/MoviesCard';
 import addToListIcon from '../assets/plus.png';
 import checkIcon from '../assets/check.png';
 import ArrowImage from '../assets/whiteArrow.png';
-import { ceil } from 'react-native-reanimated';
-import { red } from 'react-native-redash';
 
 const { url } = require('../config/url');
 

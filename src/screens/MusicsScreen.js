@@ -29,27 +29,41 @@ const MusicsScreen = ({ route, navigation }) => {
       setMusics(data.musics.musics);
     })();
   }, []);
+
+  const [search, setSearch] = useState('');
   return (
     <View style={{ flex: 1, backgroundColor: 'ffffff' }}>
-      <Header title="músicas"></Header>
+      <View style={{ alignItems: 'center' }}>
+        <Header title="musicas"></Header>
+        <SearchBox
+          placeholder={'Pesquisa...'}
+          placeholderTextColor={'#ccc'}
+          onChangeText={(newSearch) => setSearch(newSearch)}
+        />
+      </View>
       <StyledScrollView
         contentContainerStyle={{
           alignItems: 'center',
           justifyContent: 'center',
         }}>
         {musics.map((res) => {
-          return (
-            <MusicsCard
-              cardName={res.nome}
-              cardGenres={res.genero}
-              cardYear={res.ano}
-              cardArtists={res.artista}
-              cardImage={res.imagem}
-              myList={myList}
-              token={token}
-              email={email}
-            />
-          );
+          if (
+            res.nome.toUpperCase().includes(search.toUpperCase()) ||
+            res.ano.toUpperCase().includes(search.toUpperCase())
+          ) {
+            return (
+              <MusicsCard
+                cardName={res.nome}
+                cardGenres={res.genero}
+                cardYear={res.ano}
+                cardArtists={res.artista}
+                cardImage={res.imagem}
+                myList={myList}
+                token={token}
+                email={email}
+              />
+            );
+          }
         })}
       </StyledScrollView>
     </View>
@@ -62,4 +76,16 @@ const StyledScrollView = styled.ScrollView`
   width: ${larguraDaTela};
   height: ${alturaDaTela * 0.01};
   background-color: #ffffff;
+`;
+
+const SearchBox = styled.TextInput`
+  background-color: transparent;
+  width: ${larguraDaTela * 0.6};
+  height: ${alturaDaTela * 0.05};
+  border-radius: 20;
+  margin-top: 10;
+  margin-bottom: 10;
+  padding-left: 10;
+  font-size: 16;
+  border-width: 1;
 `;

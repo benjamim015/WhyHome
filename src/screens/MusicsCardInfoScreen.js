@@ -24,8 +24,6 @@ const MusicsCardInfoScreen = ({ route, navigation }) => {
   const { token } = route.params;
   const { email } = route.params;
 
-  // console.log('ASDASDASDASD', route.params);
-
   const [isInMyList, setIsInMyList] = useState(false);
 
   useEffect(() => {

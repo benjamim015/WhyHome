@@ -20,8 +20,6 @@ const SeriesScreen = ({ route, navigation }) => {
   const { token } = route.params;
   const { email } = route.params;
 
-  console.log('email:', email);
-
   useEffect(() => {
     (async () => {
       const res = await fetch(
@@ -32,30 +30,43 @@ const SeriesScreen = ({ route, navigation }) => {
       setSeries(data.series.series);
     })();
   }, []);
-  // console.log(myList);
+
+  const [search, setSearch] = useState('');
   return (
     <View style={{ flex: 1, backgroundColor: '#ffffff' }}>
-      <Header title="séries"></Header>
+      <View style={{ alignItems: 'center' }}>
+        <Header title="series"></Header>
+        <SearchBox
+          placeholder={'Pesquisa...'}
+          placeholderTextColor={'#ccc'}
+          onChangeText={(newSearch) => setSearch(newSearch)}
+        />
+      </View>
       <StyledScrollView
         contentContainerStyle={{
           alignItems: 'center',
           justifyContent: 'center',
         }}>
         {series.map((res) => {
-          return (
-            <SeriesCard
-              cardTitle={res.nome}
-              cardImage={res.imagem}
-              cardYear={res.ano}
-              cardGenres={res.generos}
-              cardSynopsis={res.sinopse}
-              cardRestriction={res.restricao}
-              cardRating={res.imdbRating}
-              myList={myList}
-              token={token}
-              email={email}
-            />
-          );
+          if (
+            res.nome.toUpperCase().includes(search.toUpperCase()) ||
+            res.ano.toUpperCase().includes(search.toUpperCase())
+          ) {
+            return (
+              <SeriesCard
+                cardTitle={res.nome}
+                cardImage={res.imagem}
+                cardYear={res.ano}
+                cardGenres={res.generos}
+                cardSynopsis={res.sinopse}
+                cardRestriction={res.restricao}
+                cardRating={res.imdbRating}
+                myList={myList}
+                token={token}
+                email={email}
+              />
+            );
+          }
         })}
       </StyledScrollView>
     </View>
@@ -76,4 +87,16 @@ const SerieCard = styled.TouchableOpacity`
   height: ${alturaDaTela * 0.15};
   margin-top: 20;
   border-radius: 25;
+`;
+
+const SearchBox = styled.TextInput`
+  background-color: transparent;
+  width: ${larguraDaTela * 0.6};
+  height: ${alturaDaTela * 0.05};
+  border-radius: 20;
+  margin-top: 10;
+  margin-bottom: 10;
+  padding-left: 10;
+  font-size: 16;
+  border-width: 1;
 `;
