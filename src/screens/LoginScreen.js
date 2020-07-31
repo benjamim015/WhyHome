@@ -216,8 +216,6 @@ const PeopleImg = styled.Image`
   align-self: center;
   margin-top: 20;
   margin-bottom: 20;
-  /* resize-mode: contain; */
-  /* background-color: red; */
 `;
 
 const Container = styled.View`
