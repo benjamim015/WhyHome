@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Dimensions, Picker, Modal } from 'react-native';
+import {
+  View,
+  Text,
+  Dimensions,
+  Picker,
+  Modal,
+  TouchableOpacity,
+} from 'react-native';
 
 import styled from 'styled-components';
 import Header from '../components/Header';
@@ -73,6 +80,12 @@ const MoviesScreen = ({ route, navigation }) => {
           onRequestClose={() => {
             setIsFiltering(false);
           }}>
+          <TouchableOpacity
+            onPress={() => setIsFiltering(!isFiltering)}
+            style={{
+              width: '100%',
+              height: '80%',
+            }}></TouchableOpacity>
           <PickerView>
             <View
               style={{
@@ -111,7 +124,14 @@ const MoviesScreen = ({ route, navigation }) => {
           .map((res) => {
             if (
               res.nome.toUpperCase().includes(search.toUpperCase()) ||
-              res.ano.toUpperCase().includes(search.toUpperCase())
+              res.ano.toUpperCase().includes(search.toUpperCase()) ||
+              res.generos
+                .map((resp) => {
+                  if (resp.toUpperCase().includes(search.toUpperCase())) {
+                    return true;
+                  }
+                })
+                .indexOf(true) > -1
             ) {
               return (
                 <MoviesCard
