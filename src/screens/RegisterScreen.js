@@ -167,7 +167,7 @@ const RegisterButton = styled.TouchableOpacity`
   width: ${larguraDaTela * 0.5};
   height: ${alturaDaTela * 0.065};
   border-radius: 100;
-  margin-top: 30;
+  margin-top: 20;
   align-self: center;
   align-items: center;
   justify-content: center;
@@ -182,7 +182,7 @@ const RegisterText = styled.Text`
 const LogoImage = styled.Image`
   position: relative;
   width: 200;
-  height: 75;
+  height: 70;
   top: -50;
   left: -20;
 `;

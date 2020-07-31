@@ -15,7 +15,7 @@ const AccountScreen = ({ route, navigation }) => {
   return (
     <RedBG style={{ height: '40%', width: '100%' }}>
       <ArrowButton onPress={() => navigation.navigate('WhyHome')}>
-        <Image3 source={arrowimg}></Image3>
+        <ArrowImg source={arrowimg}></ArrowImg>
       </ArrowButton>
       <View
         style={{
@@ -23,8 +23,6 @@ const AccountScreen = ({ route, navigation }) => {
           justifyContent: 'center',
           alignItems: 'center',
           justifyContent: 'center',
-          // backgroundColor: 'pink',
-          // // flexDirection: 'row',
         }}>
         <PeopleImg source={peopleimg} />
         <View>
@@ -69,9 +67,10 @@ const StyledText = styled.Text`
   /* margin-right: 70; */
 `;
 
-const Image3 = styled.Image`
-  width: 60;
-  height: 60;
+const ArrowImg = styled.Image`
+  margin-top: 15;
+  width: ${screenWidth * 0.24};
+  height: ${screenHeight * 0.06};
 `;
 
 const ArrowButton = styled.TouchableOpacity``;
