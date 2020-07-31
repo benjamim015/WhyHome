@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Dimensions } from 'react-native';
+import FlashMessage, {
+  showMessage,
+  hideMessage,
+} from 'react-native-flash-message';
 
 import styled from 'styled-components';
 import Header from '../components/Header';
@@ -81,6 +85,10 @@ const SeriesCardInfoScreen = ({ route, navigation }) => {
         </OverlayCard2>
         <AddToListButton
           onPress={async () => {
+            showMessage({
+              message: isInMyList ? 'Removido da lista' : 'Adicionado a lista',
+              type: 'info',
+            });
             setIsInMyList(!isInMyList);
             if (isInMyList == false) {
               await fetch(`${url}/users/addToMyList`, {
@@ -91,7 +99,7 @@ const SeriesCardInfoScreen = ({ route, navigation }) => {
                 },
                 body: JSON.stringify({
                   email: email,
-                  type: 'serie',
+                  type: 'series',
                   nome: title,
                   generos: genres,
                   ano: year,
@@ -137,6 +145,22 @@ const SeriesCardInfoScreen = ({ route, navigation }) => {
           }}>
           <AddToListImage source={isInMyList ? checkIcon : addToListIcon} />
         </AddToListButton>
+        <FlashMessage
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: '#000000',
+          }}
+          titleStyle={{
+            fontSize: 20,
+
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: 30,
+            textAlignVertical: 'center',
+          }}
+          position="bottom"
+        />
       </OverlayCard>
     </View>
   );
