@@ -49,9 +49,9 @@ const HomeScreen = ({ route, navigation }) => {
   const ThisScreen = () => {
     return (
       <View style={{ flex: 1, backgroundColor: '#ffffff' }}>
-        <SwipeView1>
-          <SwipeView2></SwipeView2>
-        </SwipeView1>
+        <SwipeRightView1>
+          <SwipeRightView2></SwipeRightView2>
+        </SwipeRightView1>
         <StyledView>
           <StyledScrollView
             showsVerticalScrollIndicator={false}></StyledScrollView>
@@ -135,7 +135,7 @@ const StyledScrollView2 = styled.ScrollView`
   height: ${alturaDaTela * 1};
 `;
 
-const SwipeView1 = styled.View`
+const SwipeRightView1 = styled.View`
   width: 10;
   height: 80;
   background-color: #06a2cc;
@@ -146,7 +146,7 @@ const SwipeView1 = styled.View`
   justify-content: center;
 `;
 
-const SwipeView2 = styled.View`
+const SwipeRightView2 = styled.View`
   width: 0;
   height: 0;
   border-top-width: 8;
