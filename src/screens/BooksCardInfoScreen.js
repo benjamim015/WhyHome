@@ -74,11 +74,11 @@ const BooksCardInfoScreen = ({ route, navigation }) => {
                 body: JSON.stringify({
                   email: email,
                   type: 'books',
+                  copias: copies,
+                  autor: author,
                   nome: title,
                   generos: genres,
                   ano: year,
-                  imdbRating: rating,
-                  restricao: restriction,
                   sinopse: synopsis,
                   imagem: image,
                 }),

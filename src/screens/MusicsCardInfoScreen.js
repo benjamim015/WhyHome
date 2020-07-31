@@ -67,13 +67,11 @@ const MusicsCardInfoScreen = ({ route, navigation }) => {
                 },
                 body: JSON.stringify({
                   email: email,
-                  type: 'musics',
-                  nome: title,
-                  generos: genres,
+                  type: 'music',
+                  nome: name,
+                  genero: genres,
+                  artista: artists,
                   ano: year,
-                  imdbRating: rating,
-                  restricao: restriction,
-                  sinopse: synopsis,
                   imagem: image,
                 }),
               })
@@ -96,7 +94,7 @@ const MusicsCardInfoScreen = ({ route, navigation }) => {
                 },
                 body: JSON.stringify({
                   email: email,
-                  nome: title,
+                  nome: name,
                 }),
               })
                 .then((response) => {

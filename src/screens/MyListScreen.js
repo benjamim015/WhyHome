@@ -43,8 +43,6 @@ const MyListScreen = ({ route, navigation }) => {
     })();
   }, [isFocused]);
 
-  console.log('ASDASDASDASDASDASDASDASDAS', userList[1]);
-
   return (
     <View style={{ flex: 1, backgroundColor: '#ffffff' }}>
       <Header title="Minha Lista"></Header>
