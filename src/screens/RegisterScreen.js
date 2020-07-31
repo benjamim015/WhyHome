@@ -97,7 +97,6 @@ const RegisterScreen = ({ navigation }) => {
                   })
                     .then((response) => response.json())
                     .then((res) => {
-                      console.log(res.response);
                       if (res.response !== null) {
                         Alert.alert('Verifique seu e-mail', '');
                         navigation.navigate('Login');

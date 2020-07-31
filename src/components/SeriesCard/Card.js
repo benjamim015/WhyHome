@@ -21,8 +21,6 @@ const Card = ({
 }) => {
   const { navigate } = useNavigation();
 
-  console.log('email:', email);
-
   const gotoInfoScreen = () => {
     navigate('SeriesCardInfoScreen', {
       title: cardTitle,

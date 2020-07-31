@@ -18,7 +18,6 @@ const larguraDaTela = Dimensions.get('window').width;
 const alturaDaTela = Dimensions.get('window').height;
 
 const SeriesCardInfoScreen = ({ route, navigation }) => {
-  console.log(route.params);
   const { title } = route.params;
   const { genres } = route.params;
   const { image } = route.params;
@@ -116,7 +115,7 @@ const SeriesCardInfoScreen = ({ route, navigation }) => {
                   if (res.response === null) {
                     console.log('ERRO');
                   } else {
-                    console.log('ITEM ADICIONADO COM SUCESSO');
+                    console.log('ADICIONADO COM SUCESSO');
                   }
                 });
             } else {
@@ -138,7 +137,7 @@ const SeriesCardInfoScreen = ({ route, navigation }) => {
                   if (res.response === null) {
                     console.log('ERRO');
                   } else {
-                    console.log('ITEM REMOVIDO COM SUCESSO');
+                    console.log('REMOVIDO COM SUCESSO');
                   }
                 });
             }

@@ -26,19 +26,9 @@ const LoginScreen = ({ route, navigation }) => {
 
   const isFocused = useIsFocused();
 
-  useEffect(() => {
-    console.log('NAVIGATION', navigation);
-    console.log('ROUTE', route);
-    console.log(email);
-    console.log(password);
-  }, [isFocused]);
-
-  // const [keep, setKeep] = useState(false);
-
   const storeData = async (value) => {
     try {
       const jsonValue = JSON.stringify(value);
-      console.log('GUARDADO COM SUCESSO', jsonValue);
       await AsyncStorage.setItem('@storage_KeepLogged', jsonValue);
       await AsyncStorage.setItem('@storage_KeepedEmail', email);
       await AsyncStorage.setItem('@storage_KeepedPassword', password);
@@ -69,7 +59,6 @@ const LoginScreen = ({ route, navigation }) => {
   useEffect(() => {
     (async () => {
       const res = await getData();
-      console.log('res123', res);
       setKeepLoggedAsync(res.keepLogged);
       setKeepedEmail(res.keepedEmail);
       setKeepedPassword(res.keepedPassword);
@@ -82,8 +71,6 @@ const LoginScreen = ({ route, navigation }) => {
   const [loading, setLoading] = useState(false);
 
   if (keepLoggedAsync && route.params == null) {
-    console.log(keepedEmail);
-    console.log(keepedPassword);
     (async () => {
       await fetch(`${url}/users/login`, {
         method: 'POST',

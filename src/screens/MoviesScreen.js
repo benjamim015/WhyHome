@@ -20,7 +20,6 @@ const alturaDaTela = Dimensions.get('window').height;
 
 const MoviesScreen = ({ route, navigation }) => {
   const [movies, setMovies] = useState([]);
-  // console.log(route);
   const { myList } = route.params;
   const { token } = route.params;
   const { email } = route.params;

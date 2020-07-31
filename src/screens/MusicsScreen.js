@@ -17,8 +17,6 @@ const MusicsScreen = ({ route, navigation }) => {
   const { token } = route.params;
   const { email } = route.params;
 
-  console.log('email:', email, token, myList);
-
   useEffect(() => {
     (async () => {
       const res = await fetch(

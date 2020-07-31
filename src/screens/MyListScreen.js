@@ -19,9 +19,6 @@ const MyListScreen = ({ route, navigation }) => {
 
   const isFocused = useIsFocused();
 
-  console.log(email, token);
-  // console.log('Token:', token);
-  // return <Text>MINHA LISTA</Text>;
   const [userList, setUserList] = useState([]);
 
   useEffect(() => {

@@ -12,7 +12,6 @@ const alturaDaTela = Dimensions.get('window').height;
 
 const BooksScreen = ({ route, navigation }) => {
   const [books, setBooks] = useState([]);
-  // console.log(route);
   const { myList } = route.params;
   const { token } = route.params;
   const { email } = route.params;
@@ -23,8 +22,6 @@ const BooksScreen = ({ route, navigation }) => {
         'https://rest-api-whyhome.herokuapp.com/books/getAll',
       );
       const data = await res.json();
-
-      console.log(data);
 
       setBooks(data.books.books);
     })();

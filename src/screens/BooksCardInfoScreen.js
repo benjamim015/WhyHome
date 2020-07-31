@@ -18,7 +18,6 @@ const larguraDaTela = Dimensions.get('window').width;
 const alturaDaTela = Dimensions.get('window').height;
 
 const BooksCardInfoScreen = ({ route, navigation }) => {
-  console.log(route.params);
   const { title } = route.params;
   const { genres } = route.params;
   const { image } = route.params;
@@ -31,8 +30,6 @@ const BooksCardInfoScreen = ({ route, navigation }) => {
   const { email } = route.params;
 
   const [isInMyList, setIsInMyList] = useState(false);
-
-  console.log(author);
 
   useEffect(() => {
     if (myList.includes(title)) {
@@ -90,7 +87,7 @@ const BooksCardInfoScreen = ({ route, navigation }) => {
                   if (res.response === null) {
                     console.log('ERRO');
                   } else {
-                    console.log('ITEM ADICIONADO COM SUCESSO');
+                    console.log('ADICIONADO COM SUCESSO');
                   }
                 });
             } else {
@@ -112,7 +109,7 @@ const BooksCardInfoScreen = ({ route, navigation }) => {
                   if (res.response === null) {
                     console.log('ERRO');
                   } else {
-                    console.log('ITEM REMOVIDO COM SUCESSO');
+                    console.log('REMOVIDO COM SUCESSO');
                   }
                 });
             }

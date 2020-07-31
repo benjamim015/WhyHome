@@ -13,7 +13,6 @@ const WelcomeScreen = ({ navigation }) => {
     try {
       const jsonValue = JSON.stringify(value);
       await AsyncStorage.setItem('@storage_FisrtTime', jsonValue);
-      console.log(jsonValue);
     } catch (e) {}
   };
 

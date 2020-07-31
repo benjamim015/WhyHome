@@ -19,8 +19,6 @@ const Card = ({
 }) => {
   const { navigate } = useNavigation();
 
-  // console.log(token);
-
   const gotoInfoScreen = () => {
     navigate('MusicsCardInfoScreen', {
       name: cardName,

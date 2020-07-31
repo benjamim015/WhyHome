@@ -18,7 +18,6 @@ const larguraDaTela = Dimensions.get('window').width;
 const alturaDaTela = Dimensions.get('window').height;
 
 const MusicsCardInfoScreen = ({ route, navigation }) => {
-  console.log(route.params);
   const { name } = route.params;
   const { genres } = route.params;
   const { year } = route.params;
@@ -82,7 +81,7 @@ const MusicsCardInfoScreen = ({ route, navigation }) => {
                   if (res.response === null) {
                     console.log('ERRO');
                   } else {
-                    console.log('ITEM ADICIONADO COM SUCESSO');
+                    console.log('ADICIONADO COM SUCESSO');
                   }
                 });
             } else {
@@ -104,7 +103,7 @@ const MusicsCardInfoScreen = ({ route, navigation }) => {
                   if (res.response === null) {
                     console.log('ERRO');
                   } else {
-                    console.log('ITEM REMOVIDO COM SUCESSO');
+                    console.log('REMOVIDO COM SUCESSO');
                   }
                 });
             }

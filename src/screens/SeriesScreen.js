@@ -8,8 +8,6 @@ import mock from '../../mocks/seriesMock';
 
 const { url } = require('../config/url');
 
-// console.log('mock:', mock[0]);
-
 const larguraDaTela = Dimensions.get('window').width;
 const alturaDaTela = Dimensions.get('window').height;
 

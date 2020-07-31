@@ -48,8 +48,6 @@ const CustomDrawer = ({ email, name, token, navigation, ...props }) => {
         setMyListFocused(false);
   }, [index]);
 
-  console.log('PROPS:', props.state.index);
-
   const WhyHomeText = styled.Text`
     color: ${whyHomeIsFocused ? '#06a2cc' : '#000000'};
     font-size: 20;
@@ -93,10 +91,7 @@ const CustomDrawer = ({ email, name, token, navigation, ...props }) => {
             onPress={() => {
               navigation.navigate('WhyHome');
             }}>
-            <LogoIconImage
-              // tintColor={whyHomeIsFocused ? '#06a2cc' : logoIcon}
-              source={logoIcon}
-            />
+            <LogoIconImage source={logoIcon} />
             <WhyHomeText>WhyHome</WhyHomeText>
           </ScreensButton>
           <ScreensButton

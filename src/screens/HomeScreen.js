@@ -44,9 +44,7 @@ const HomeScreen = ({ route, navigation }) => {
 
       setMyList(data.userList.map((res) => res.nome));
     })();
-  }, [isFocused]);
-
-  console.log('myList', myList);
+  }, [isFocused, navigation]);
 
   const ThisScreen = () => {
     return (
@@ -87,9 +85,6 @@ const HomeScreen = ({ route, navigation }) => {
 
   return (
     <Drawer.Navigator
-      drawerContentOptions={{
-        activeTintColor: 'purple',
-      }}
       drawerStyle={{ width: '60%' }}
       drawerContent={(props) => (
         <CustomDrawer
