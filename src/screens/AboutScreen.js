@@ -13,8 +13,8 @@ const AboutScreen = ({ navigation }) => {
         <ArrowImg source={arrowimg}></ArrowImg>
       </ArrowButton>
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text1>Project for Hackathon</Text1>
-        <Text2>Call For Code</Text2>
+        <Text>Projeto para o Hackathon</Text>
+        <Text>Call For Code 2020</Text>
       </View>
     </Background>
   );
@@ -24,20 +24,10 @@ const Background = styled.View`
   background-color: #006ec2;
 `;
 
-const Text1 = styled.Text`
+const Text = styled.Text`
   color: #ffffff;
-  margin-top: 560;
-  align-items: center;
   font-size: 19;
   font-family: Kanit-Regular;
-  width: ${windowWidth * 0.52};
-  height: ${windowHeight * 0.04};
-`;
-
-const Text2 = styled.Text`
-  color: #ffffff;
-  font-family: Kanit-Regular;
-  font-size: 19;
 `;
 
 const ArrowImg = styled.Image`

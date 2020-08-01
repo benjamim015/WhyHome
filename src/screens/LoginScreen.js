@@ -103,7 +103,7 @@ const LoginScreen = ({ route, navigation }) => {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <Image source={Logo} style={{ width: '60%', height: '10%' }} />
+        <Image source={Logo} style={{ width: '45%', height: '10%' }} />
       </View>
     );
   }
