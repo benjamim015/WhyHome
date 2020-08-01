@@ -63,6 +63,7 @@ const MusicsScreen = ({ route, navigation }) => {
                 cardYear={res.ano}
                 cardArtists={res.artista}
                 cardImage={res.imagem}
+                cardAvailableIn={res.disponivelEm}
                 myList={myList}
                 token={token}
                 email={email}

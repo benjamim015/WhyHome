@@ -65,6 +65,7 @@ const SeriesScreen = ({ route, navigation }) => {
                 cardSynopsis={res.sinopse}
                 cardRestriction={res.restricao}
                 cardRating={res.imdbRating}
+                cardAvailableIn={res.disponivelEm}
                 myList={myList}
                 token={token}
                 email={email}

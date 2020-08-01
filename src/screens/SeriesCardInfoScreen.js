@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Dimensions } from 'react-native';
+import { View, Text, Dimensions, Linking } from 'react-native';
 import FlashMessage, {
   showMessage,
   hideMessage,
@@ -11,6 +11,15 @@ import Card from '../components/SeriesCard';
 import addToListIcon from '../assets/plus.png';
 import checkIcon from '../assets/check.png';
 import ArrowImage from '../assets/whiteArrow.png';
+
+import amazonLogo from '../assets/AmazonLogo.png';
+import appleLogo from '../assets/AppleLogo.png';
+import disneyLogo from '../assets/DisneyLogo.png';
+import globoLogo from '../assets/GloboLogo.png';
+import hboLogo from '../assets/HBOLogo.png';
+import huluLogo from '../assets/HuluLogo.png';
+import netflixLogo from '../assets/NetflixLogo.png';
+import youtubeLogo from '../assets/YoutubeLogo.png';
 
 const { url } = require('../config/url');
 
@@ -28,6 +37,7 @@ const SeriesCardInfoScreen = ({ route, navigation }) => {
   const { myList } = route.params;
   const { token } = route.params;
   const { email } = route.params;
+  const { availableIn } = route.params;
 
   const [isInMyList, setIsInMyList] = useState(false);
 
@@ -71,6 +81,34 @@ const SeriesCardInfoScreen = ({ route, navigation }) => {
           <ArrowImg source={ArrowImage}></ArrowImg>
         </ArrowB>
         <OverlayCard2>
+          <View
+            style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <StyledText>Disponível em:</StyledText>
+            <StyledButton onPress={() => Linking.openURL(availableIn[1])}>
+              <StyledImage
+                source={
+                  availableIn[0] == 'Amazon'
+                    ? amazonLogo
+                    : availableIn[0] == 'Apple'
+                    ? appleLogo
+                    : availableIn[0] == 'Disney'
+                    ? disneyLogo
+                    : availableIn[0] == 'Globo'
+                    ? globoLogo
+                    : availableIn[0] == 'HBO'
+                    ? hboLogo
+                    : availableIn[0] == 'Hulu'
+                    ? huluLogo
+                    : availableIn[0] == 'Netflix'
+                    ? netflixLogo
+                    : youtubeLogo
+                }
+              />
+            </StyledButton>
+          </View>
           <Title>{title}</Title>
           <Synopsis>{synopsis}</Synopsis>
           <InfoView>
@@ -180,6 +218,24 @@ const OverlayCard = styled.View`
   height: 100%;
   justify-content: center;
   align-items: center;
+`;
+
+const StyledText = styled.Text`
+  color: #ffffff;
+  font-size: 20;
+`;
+
+const StyledButton = styled.TouchableOpacity`
+  background-color: 'rgba(255, 255, 255, 0.1)';
+  width: 40;
+  height: 40;
+  border-radius: 5;
+`;
+
+const StyledImage = styled.Image`
+  width: 40;
+  height: 40;
+  border-radius: 5;
 `;
 
 const OverlayCard2 = styled.View`

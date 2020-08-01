@@ -65,6 +65,7 @@ const BooksScreen = ({ route, navigation }) => {
                 cardSynopsis={res.sinopse}
                 cardAuthor={res.autor}
                 cardCopies={res.copias}
+                cardAvailableIn={res.disponivelEm}
                 myList={myList}
                 token={token}
                 email={email}
