@@ -53,6 +53,7 @@ const HomeCard = ({ myList, token, email, title }) => {
               : null
           }
         />
+        <OverlayImage />
         <Title>{title}</Title>
       </Cards>
     </TouchableCard>
@@ -69,6 +70,14 @@ const TouchableCard = styled.TouchableOpacity`
   margin-left: 10;
   margin-right: 10;
   border-radius: 20;
+`;
+
+const OverlayImage = styled.Image`
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 50;
 `;
 
 const BackgroundImage = styled.Image`
