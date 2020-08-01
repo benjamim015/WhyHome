@@ -144,6 +144,7 @@ const SeriesCardInfoScreen = ({ route, navigation }) => {
                   restricao: restriction,
                   sinopse: synopsis,
                   imagem: image,
+                  disponivelEm: availableIn,
                 }),
               })
                 .then((response) => {

@@ -17,6 +17,8 @@ const MyListScreen = ({ route, navigation }) => {
   const { token } = route.params;
   const { email } = route.params;
 
+  console.log(route.params);
+
   const isFocused = useIsFocused();
 
   const [userList, setUserList] = useState([]);
@@ -35,7 +37,7 @@ const MyListScreen = ({ route, navigation }) => {
       });
 
       const data = await res.json();
-
+      console.log('DATA:', data);
       setUserList(data.userList);
     })();
   }, [isFocused]);
@@ -58,6 +60,7 @@ const MyListScreen = ({ route, navigation }) => {
               cardSynopsis={res.sinopse}
               cardRestriction={res.restricao}
               cardRating={res.imdbRating}
+              cardAvailableIn={res.disponivelEm}
               myList={res.nome}
               token={token}
               email={email}
@@ -69,6 +72,7 @@ const MyListScreen = ({ route, navigation }) => {
               cardYear={res.ano}
               cardArtists={res.artista}
               cardGenres={res.genero}
+              cardAvailableIn={res.disponivelEm}
               myList={res.nome}
               token={token}
               email={email}
@@ -82,6 +86,7 @@ const MyListScreen = ({ route, navigation }) => {
               cardSynopsis={res.sinopse}
               cardAuthor={res.autor}
               cardCopies={res.copias}
+              cardAvailableIn={res.disponivelEm}
               myList={res.nome}
               token={token}
               email={email}

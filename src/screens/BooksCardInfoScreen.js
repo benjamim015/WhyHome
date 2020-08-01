@@ -116,6 +116,7 @@ const BooksCardInfoScreen = ({ route, navigation }) => {
                   ano: year,
                   sinopse: synopsis,
                   imagem: image,
+                  disponivelEm: availableIn,
                 }),
               })
                 .then((response) => {

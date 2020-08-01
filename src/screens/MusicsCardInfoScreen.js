@@ -110,6 +110,7 @@ const MusicsCardInfoScreen = ({ route, navigation }) => {
                   artista: artists,
                   ano: year,
                   imagem: image,
+                  disponivelEm: availableIn,
                 }),
               })
                 .then((response) => {
